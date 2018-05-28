@@ -1,0 +1,56 @@
+<view>
+  <view class="header">
+    <view class="main">
+      <image src="./imgs/sale.png" background-size="cover"></image>
+      <view>
+        <text class="title">超值抢购</text>
+        <text class="content">精品特卖，周边优惠享不停</text>
+      </view>
+    </view>
+    <text class="count">{{current + 1}}<text>/3</text></text>
+  </view>
+
+  <swiper current="{{current}}" circular bindchange="slideSwiper" duration="600" style="height: 628rpx;" previous-margin="40rpx" next-margin="40rpx">
+    <block wx:for="{{swipers}}" wx:key="{{item.id}}">
+      <swiper-item>
+        <image class="swiper-image" src="{{item.cover_url}}" />
+        <text class="count">已售 209</text>
+        <view class="swiper-info">
+          <view>
+            <text class="name">鲜榨芒果汁</text>
+            <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
+          </view>
+          <button class="primary-button" bindtap="buyBtn">抢购</button>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="goods">
+    <image src="../../imgs/goods-small2.jpg" background-size="cover"></image>
+    <view class="content">
+      <text class="name">鲜榨芒果汁低卡套餐燕麦火腿三明治＋鲜榨果汁</text>
+      <view class="footer">
+        <view>
+          <text class="number">已售 209</text>
+          <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
+        </view>
+        <button class="primary-button" bindtap="buyBtn">购买</button>
+      </view>
+    </view>
+  </view>
+  <view class="goods">
+    <image src="../../imgs/goods-small.jpg" background-size="cover"></image>
+    <view class="content">
+      <text class="name">鲜榨芒果汁低卡套餐燕麦火腿三明治＋鲜榨果汁</text>
+      <view class="footer">
+        <view>
+          <text class="number">已售 209</text>
+          <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
+        </view>
+        <button class="primary-button" bindtap="buyBtn">购买</button>
+      </view>
+    </view>
+  </view>
+  <view style="height: 30rpx"></view>
+</view>

@@ -1,0 +1,49 @@
+<swiper circular autoplay indicator-dots duration="600" style="height:564rpx;">
+  <block wx:for="{{swipers}}" wx:key="{{item.id}}">
+    <swiper-item>
+      <image src="{{item.cover_url}}" background-size="cover"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="intro">
+  <text class="name">日本鹤梅完熟果肉梅酒日本鹤梅完熟果肉梅酒</text>
+  <view class="body">
+    <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
+    <view class="number">
+      <text class="sale-number">已售 209</text>
+      <image src="./imgs/eyes.png" background-size="cover"></image>
+      <text>869</text>
+    </view>
+  </view>
+  <view class="footer">
+    <text><text class="dot"/><text>兑换时间：2018.7.20 - 201</text></text>
+    <text><text class="dot"/><text>本单不限购买个数</text></text>
+  </view>
+</view>
+
+<view class="outer">
+  <view class="stores">
+    <image class="shopicon" src="../../imgs/goods.jpg" background-size="cover"/>
+    <view>
+      <text class="shopname">FIKAFIKA(望京SOHO店)</text>
+      <image class="mark" src="./imgs/mark.png" background-size="cover"/>
+      <text>北京市朝阳区 望京SOHO 中心广场负一层1021 地址很长</text>
+    </view>
+    <image class="mobile" src="./imgs/mobile.png" background-size="cover"/>
+  </view>
+  <view class="shoplist">
+    <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
+    <text>6家FIKAFIKA连锁店</text>
+    <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>
+  </view>
+</view>
+
+<view class="detail">
+  <text class="title">商品详情</text>
+  <view class="content">
+    <text class="p">DFS超大福利礼品券：香港无限量流量手机 FS超大福利礼品券：香港无限量流量手机</text>
+    <image src="../../imgs/goods.jpg" background-size="cover"/>
+    <image src="../../imgs/goods2.jpg" background-size="cover"/>
+  </view>
+</view>

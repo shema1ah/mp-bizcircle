@@ -1,0 +1,37 @@
+@import './base/global';
+
+.news {
+  @extend %flex-between;
+  padding: 30rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #E5E5E5;
+  > image {
+    width: 329rpx;
+    height: 184rpx;
+    margin-right: 16rpx;
+  }
+  .content {
+    flex: 1;
+    @extend %flex-between;
+    flex-direction: column;
+    .title {
+      font-size: 32rpx;
+    }
+    .footer {
+      color: #A7A9AE;
+      line-height: 1;
+      .type {
+        display: block;
+        margin-bottom: 18rpx;
+      }
+      .view-number, image {
+        vertical-align: middle;
+      }
+      image {
+        width: 32rpx;
+        height: 22rpx;
+        margin-right: 12rpx;
+      }
+    }
+  }
+}

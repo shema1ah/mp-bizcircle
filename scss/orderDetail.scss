@@ -1,0 +1,121 @@
+@import './base/global';
+
+page {
+  background: linear-gradient(to bottom, #FF603D, #F00832);
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.orderDetail {
+  border-radius: 10rpx;
+  overflow: hidden;
+  background-color: #fff;
+  .header {
+    padding: 30rpx;
+    background-color: #F4F2F2;
+    @extend %flex-between;
+    image {
+      width: 216rpx;
+      height: 144rpx;
+      margin-right: 12rpx;
+    }
+    .content {
+      flex: 1;
+      @extend %flex-between;
+      flex-direction: column;
+      .name {
+        font-size: 32rpx;
+      }
+      view {
+        line-height: 1;
+        @extend %flex-between;
+        align-items: flex-end;
+        .price {
+          color: #000;
+        }
+      }
+    }
+  }
+  .body {
+    color: #8A8C92;
+    text-align: center;
+    padding: 60rpx 0 55rpx;
+    border-bottom: 4rpx dashed #F31534;
+    image {
+      width: 240rpx;
+      height: 240rpx;
+    }
+    text {
+      vertical-align: middle;
+    }
+    .dot {
+      display: inline-block;
+      width: 14rpx;
+      height: 14rpx;
+      border-radius: 100%;
+      margin-right: 14rpx;
+      background-color: #FFC121;
+    }
+  }
+  .footer {
+    @extend %flex-between;
+    padding: 30rpx;
+    position: relative;
+    .semicircle {
+      width: 36rpx;
+      height: 36rpx;
+      border-radius: 100%;
+      background-color: #F31534;
+      position: absolute;
+      left: -18rpx;
+      top: -18rpx;
+      &.right {
+        left: auto;
+        right: -18rpx;
+      }
+    }
+    .shopicon {
+      @include circle(84rpx);
+      margin-right: 20rpx;
+    }
+    view {
+      flex: 1;
+      color: #606470;
+      .shopname {
+        display: block;
+        margin-bottom: 15rpx;
+        line-height: 1;
+        font-size: 32rpx;
+        font-weight: bold;
+        color: #2F323A;
+      }
+    }
+    .mobile {
+      width: 30rpx;
+      height: 40rpx;
+      align-self: center;
+      margin-left: 60rpx;
+    }
+  }
+}
+
+.shoplist {
+  border-top: 2rpx solid #E5E5E5;
+  @extend %flex-between;
+  align-items: center;
+  padding: 30rpx;
+  .shopicon {
+    width: 36rpx;
+    height: 32rpx;
+    margin-right: 12rpx;
+  }
+  text {
+    flex: 1;
+    font-size: 28rpx;
+    color: #606470;
+  }
+  .arrow {
+    width: 16rpx;
+    height: 24rpx;
+  }
+}

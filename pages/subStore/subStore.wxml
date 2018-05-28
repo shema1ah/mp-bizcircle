@@ -1,0 +1,27 @@
+<view class="store">
+  <image class="headimg" src="../../imgs/goods.jpg" background-size="cover"/>
+  <view class="content">
+    <text class="shopname">店名店名</text>
+    <view class="address">
+      <image src="./imgs/mark.png"/>
+      <text>地址地址地址地址地址地址地址地址地址地址地址地址</text>
+    </view>
+  </view>
+  <button bindtap="call" data-number="13161009030" class="mobile">
+    <image src="./imgs/mobile.png" background-size="cover"/>
+  </button>
+</view>
+
+<view class="store">
+  <image class="headimg" src="../../imgs/goods.jpg" background-size="cover"/>
+  <view class="content">
+    <text class="shopname">店名店名</text>
+    <view class="address">
+      <image src="./imgs/mark.png"/>
+      <text>地址地址地址</text>
+    </view>
+  </view>
+  <button bindtap="call" data-number="13161009030" class="mobile">
+    <image src="./imgs/mobile.png" background-size="cover"/>
+  </button>
+</view>

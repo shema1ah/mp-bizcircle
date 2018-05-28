@@ -1,0 +1,43 @@
+.store {
+  display: flex;
+  padding: 30rpx 0 30rpx 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  .headimg {
+    width: 110rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+  }
+  .content {
+    flex: 1;
+  }
+  .shopname {
+    display: block;
+    font-size: 32rpx;
+    font-weight: normal;
+    margin-bottom: 12rpx;
+    line-height: 1.2;
+  }
+  .address {
+    color: #8A8C92;
+    font-size: 24rpx;
+    image, text {
+      vertical-align: middle;
+    }
+    image {
+      width: 18rpx;
+      height: 22rpx;
+      margin-right: 10rpx;
+    }
+  }
+  .mobile {
+    width: 100rpx;
+    height: 100rpx;
+    text-align: center;
+    align-self: center;
+    image {
+      width: 28rpx;
+      height: 40rpx;
+      vertical-align: middle;
+    }
+  }
+}

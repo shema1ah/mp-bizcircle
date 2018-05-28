@@ -1,0 +1,32 @@
+<view bindtap="goNewsDetail" class="news">
+  <image src="../../imgs/goods.jpg" background-size="cover"></image>
+  <view class="content">
+    <text class="title">日本鹤梅完熟果肉梅酒</text>
+    <view class="footer">
+      <text class="type"># 图文</text>
+      <image src="./imgs/eyes.png" background-size="cover"></image><text class="view-number">967</text>
+    </view>
+  </view>
+</view>
+
+<view bindtap="goNewsDetail" class="news">
+  <image src="../../imgs/goods.jpg" background-size="cover"></image>
+  <view class="content">
+    <text class="title">日本鹤梅完熟果肉梅酒</text>
+    <view class="footer">
+      <text class="type"># 图文</text>
+      <image src="./imgs/eyes.png" background-size="cover"></image><text class="view-number">967</text>
+    </view>
+  </view>
+</view>
+
+<view bindtap="goNewsDetail" class="news">
+  <image src="../../imgs/goods.jpg" background-size="cover"></image>
+  <view class="content">
+    <text class="title">日本鹤梅完熟果肉梅酒</text>
+    <view class="footer">
+      <text class="type"># 图文</text>
+      <image src="./imgs/eyes.png" background-size="cover"></image><text class="view-number">967</text>
+    </view>
+  </view>
+</view>

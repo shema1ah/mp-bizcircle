@@ -1,0 +1,10 @@
+%flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin circle($radius) {
+  width: $radius;
+  height: $radius;
+  border-radius: 100%;
+}

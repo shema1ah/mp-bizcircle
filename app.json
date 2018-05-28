@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/goodsDetail/goodsDetail",
+    "pages/subStore/subStore",
+    "pages/orderDetail/orderDetail",
+    "pages/index/index",
+    "pages/news/news",
+    "pages/orders/orders"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "#f7f7f7",
+    "navigationBarBackgroundColor": "#FE5316",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#2F323A",
+    "selectedColor": "#FF8100",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "./imgs/index.png",
+      "selectedIconPath": "./imgs/indexSelected.png"
+    }, {
+      "pagePath": "pages/news/news",
+      "text": "本地资讯",
+      "iconPath": "./imgs/local.png",
+      "selectedIconPath": "./imgs/localSelected.png"
+    }, {
+      "pagePath": "pages/subStore/subStore",
+      "text": "好近商城",
+      "iconPath": "./imgs/shop.png",
+      "selectedIconPath": "./imgs/shopSelected.png"
+    }, {
+      "pagePath": "pages/orders/orders",
+      "text": "我的订单",
+      "iconPath": "./imgs/order.png",
+      "selectedIconPath": "./imgs/orderSelected.png"
+    }]
+  }
+}

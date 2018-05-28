@@ -1,0 +1,122 @@
+@import './base/global';
+
+.header {
+  @extend %flex-between;
+  align-items: flex-end;
+  padding: 10rpx 50rpx 20rpx 24rpx;
+  image {
+    width: 114rpx;
+    height: 114rpx;
+    margin-right: 18rpx;
+  }
+  .main {
+    display: flex;
+    align-items: center;
+  }
+  .title {
+    display: block;
+    margin-top: 20rpx;
+    line-height: 1;
+  }
+  .content {
+    font-size: 24rpx;
+    color: #8A8C92;
+  }
+  .count {
+    letter-spacing: 6rpx;
+    font-size: 40rpx;
+    text {
+      color: #8A8C92;
+      font-size: 24rpx;
+    }
+  }
+}
+
+swiper {
+  margin-bottom: 60rpx;
+}
+swiper-item {
+  position: relative;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  .count {
+    position: absolute;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    padding: 0 16rpx;
+    left: 50%;
+    bottom: 160rpx;
+    transform: translateX(-50%);
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+}
+.swiper-image {
+  width: 100%;
+  height: 492rpx;
+  vertical-align: bottom;
+}
+.swiper-info {
+  background-color: #fff;
+  border-radius: 0 0 9rpx 9rpx;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  @extend %flex-between;
+  align-items: center;
+  padding: 12rpx 30rpx;
+  .name {
+    font-size: 32rpx;
+    display: block;
+  }
+  button {
+    width: 140rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+  }
+}
+
+.goods {
+  @extend %flex-between;
+  background-color: #fff;
+  padding: 30rpx;
+  border-bottom: 1px solid #F7F7F7;
+  image {
+    width: 256rpx;
+    height: 192rpx;
+    margin-right: 20rpx;
+  }
+  .content {
+    flex: 1;
+    @extend %flex-between;
+    flex-direction: column;
+  }
+  .name {
+    display: block;
+    font-size: 30rpx;
+    font-weight: bold;
+  }
+  .number {
+    display: inline-block;
+    padding: 0 16rpx;
+    height: 40rpx;
+    margin-bottom: 16rpx;
+    text-align: center;
+    border-radius: 20rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    background-color: #FFE6CC;
+    color: #FF8100;
+  }
+  .footer {
+    @extend %flex-between;
+    align-items: flex-end;
+    .price {
+      line-height: 1;
+    }
+    button {
+      width: 140rpx;
+      height: 52rpx;
+      line-height: 52rpx;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.order .header, .order .body, .content, .content .title, .content .footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order {
+  padding-left: 30rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom: 1rpx solid #E5E5E5;
+  margin-top: 20rpx;
+}
+
+.order.done {
+  color: #8A8C92;
+}
+
+.order .header {
+  height: 80rpx;
+  padding-right: 30rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.order .header .status {
+  color: #FF8100;
+}
+
+.order .body {
+  padding: 30rpx 30rpx 30rpx 0;
+}
+
+.order .body image {
+  width: 216rpx;
+  height: 144rpx;
+  margin-right: 24rpx;
+}
+
+.content {
+  flex: 1;
+  height: 144rpx;
+  flex-direction: column;
+}
+
+.content .name {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.content .title .status {
+  line-height: 92rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border: 4rpx solid #B2B2B2;
+  text-align: center;
+  transform: rotate(45deg);
+  margin-right: -10rpx;
+}
+
+.content .title .status text {
+  display: inline-block;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 100%;
+  border: 2rpx solid #B2B2B2;
+}
+
+.content .footer {
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.content .footer .price {
+  color: inherit;
+}
+
+.content .footer .price .origin {
+  margin-left: 12rpx;
+}

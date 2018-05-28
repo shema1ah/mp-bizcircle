@@ -1,0 +1,18 @@
+{
+  "name": "quickstart",
+  "version": "1.0.0",
+  "description": "商圈小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "license": "ISC",
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^4.0.1",
+    "gulp-scss": "^1.4.0"
+  }
+}

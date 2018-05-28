@@ -1,0 +1,28 @@
+page {
+  background-color: #f7f7f7;
+  font-size: 24rpx;
+}
+button::after {
+  border: none;
+}
+
+.price {
+  font-size: 40rpx;
+  color: #FF8100;
+}
+.price text {
+  font-size: 28rpx;
+}
+.price .origin {
+  margin-left: 16rpx;
+  color: #A7A9AE;
+  text-decoration: line-through;
+}
+
+.primary-button {
+  margin: 0;
+  border: none;
+  font-size: 28rpx;
+  background-color: #FF8100;
+  color: #fff;
+}

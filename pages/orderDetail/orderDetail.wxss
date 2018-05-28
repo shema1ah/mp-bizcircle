@@ -1,0 +1,141 @@
+.orderDetail .header, .orderDetail .header .content, .orderDetail .header .content view, .orderDetail .footer, .shoplist {
+  display: flex;
+  justify-content: space-between;
+}
+
+page {
+  background: linear-gradient(to bottom, #FF603D, #F00832);
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.orderDetail {
+  border-radius: 10rpx;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.orderDetail .header {
+  padding: 30rpx;
+  background-color: #F4F2F2;
+}
+
+.orderDetail .header image {
+  width: 216rpx;
+  height: 144rpx;
+  margin-right: 12rpx;
+}
+
+.orderDetail .header .content {
+  flex: 1;
+  flex-direction: column;
+}
+
+.orderDetail .header .content .name {
+  font-size: 32rpx;
+}
+
+.orderDetail .header .content view {
+  line-height: 1;
+  align-items: flex-end;
+}
+
+.orderDetail .header .content view .price {
+  color: #000;
+}
+
+.orderDetail .body {
+  color: #8A8C92;
+  text-align: center;
+  padding: 60rpx 0 55rpx;
+  border-bottom: 4rpx dashed #F31534;
+}
+
+.orderDetail .body image {
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.orderDetail .body text {
+  vertical-align: middle;
+}
+
+.orderDetail .body .dot {
+  display: inline-block;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 100%;
+  margin-right: 14rpx;
+  background-color: #FFC121;
+}
+
+.orderDetail .footer {
+  padding: 30rpx;
+  position: relative;
+}
+
+.orderDetail .footer .semicircle {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 100%;
+  background-color: #F31534;
+  position: absolute;
+  left: -18rpx;
+  top: -18rpx;
+}
+
+.orderDetail .footer .semicircle.right {
+  left: auto;
+  right: -18rpx;
+}
+
+.orderDetail .footer .shopicon {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 100%;
+  margin-right: 20rpx;
+}
+
+.orderDetail .footer view {
+  flex: 1;
+  color: #606470;
+}
+
+.orderDetail .footer view .shopname {
+  display: block;
+  margin-bottom: 15rpx;
+  line-height: 1;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2F323A;
+}
+
+.orderDetail .footer .mobile {
+  width: 30rpx;
+  height: 40rpx;
+  align-self: center;
+  margin-left: 60rpx;
+}
+
+.shoplist {
+  border-top: 2rpx solid #E5E5E5;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.shoplist .shopicon {
+  width: 36rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+}
+
+.shoplist text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #606470;
+}
+
+.shoplist .arrow {
+  width: 16rpx;
+  height: 24rpx;
+}

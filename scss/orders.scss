@@ -1,0 +1,72 @@
+@import './base/global';
+
+.order {
+  padding-left: 30rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom: 1rpx solid #E5E5E5;
+  margin-top: 20rpx;
+  &.done {
+    color: #8A8C92;
+  }
+  .header {
+    height: 80rpx;
+    padding-right: 30rpx;
+    @extend %flex-between;
+    align-items: center;
+    border-bottom: 1rpx solid #E5E5E5;
+    .status {
+      color: #FF8100;
+    }
+  }
+  .body {
+    @extend %flex-between;
+    padding: 30rpx 30rpx 30rpx 0;
+    image {
+      width: 216rpx;
+      height: 144rpx;
+      margin-right: 24rpx;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  height: 144rpx;
+  flex-direction: column;
+  @extend %flex-between;
+  .name {
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+  .title {
+    @extend %flex-between;
+    .status {
+      line-height: 92rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include circle(100rpx);
+      border: 4rpx solid #B2B2B2;
+      text-align: center;
+      transform: rotate(45deg);
+      margin-right: -10rpx;
+      text {
+        display: inline-block;
+        @include circle(88rpx);
+        border: 2rpx solid #B2B2B2;
+      }
+    }
+  }
+  .footer {
+    @extend %flex-between;
+    align-items: flex-end;
+    line-height: 1;
+    .price {
+      color: inherit;
+      .origin {
+        margin-left: 12rpx;
+      }
+    }
+  }
+}

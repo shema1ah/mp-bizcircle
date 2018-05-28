@@ -1,0 +1,139 @@
+.header, .swiper-info, .goods, .goods .content, .goods .footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  align-items: flex-end;
+  padding: 10rpx 50rpx 20rpx 24rpx;
+}
+
+.header image {
+  width: 114rpx;
+  height: 114rpx;
+  margin-right: 18rpx;
+}
+
+.header .main {
+  display: flex;
+  align-items: center;
+}
+
+.header .title {
+  display: block;
+  margin-top: 20rpx;
+  line-height: 1;
+}
+
+.header .content {
+  font-size: 24rpx;
+  color: #8A8C92;
+}
+
+.header .count {
+  letter-spacing: 6rpx;
+  font-size: 40rpx;
+}
+
+.header .count text {
+  color: #8A8C92;
+  font-size: 24rpx;
+}
+
+swiper {
+  margin-bottom: 60rpx;
+}
+
+swiper-item {
+  position: relative;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+
+swiper-item .count {
+  position: absolute;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  padding: 0 16rpx;
+  left: 50%;
+  bottom: 160rpx;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 492rpx;
+  vertical-align: bottom;
+}
+
+.swiper-info {
+  background-color: #fff;
+  border-radius: 0 0 9rpx 9rpx;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  padding: 12rpx 30rpx;
+}
+
+.swiper-info .name {
+  font-size: 32rpx;
+  display: block;
+}
+
+.swiper-info button {
+  width: 140rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+.goods {
+  background-color: #fff;
+  padding: 30rpx;
+  border-bottom: 1px solid #F7F7F7;
+}
+
+.goods image {
+  width: 256rpx;
+  height: 192rpx;
+  margin-right: 20rpx;
+}
+
+.goods .content {
+  flex: 1;
+  flex-direction: column;
+}
+
+.goods .name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.goods .number {
+  display: inline-block;
+  padding: 0 16rpx;
+  height: 40rpx;
+  margin-bottom: 16rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  background-color: #FFE6CC;
+  color: #FF8100;
+}
+
+.goods .footer {
+  align-items: flex-end;
+}
+
+.goods .footer .price {
+  line-height: 1;
+}
+
+.goods .footer button {
+  width: 140rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+}
