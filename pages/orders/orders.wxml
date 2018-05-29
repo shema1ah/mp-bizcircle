@@ -58,3 +58,30 @@
     </view>
   </view>
 </view>
+
+<block wx:for="{{orders}}" wx:key="{{item.id}}">
+  <view bindtap="goOrderDetail" class="order done">
+    <view class="header">
+      <text class="">订单编号：12345678909876543</text>
+    </view>
+    <view class="body">
+      <image src="../../imgs/goods.jpg" background-size="cover"></image>
+      <view class="content">
+        <view class="title">
+          <text class="name">{{item.name}}</text>
+          <view class="status">
+            <text>已过期</text>
+          </view>
+        </view>
+        <view class="footer">
+          <text class="price">￥180<text class="origin">￥200</text></text>
+          <text>x 1</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view class="loading" hidden="{{isLoading}}">
+  <image src="../../imgs/loading.png" background-size="cover"></image><text>加载中...</text>
+</view>

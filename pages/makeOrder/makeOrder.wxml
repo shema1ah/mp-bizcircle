@@ -1,0 +1,30 @@
+<view class="goods">
+  <image src="../../imgs/goods.jpg" background-size="cover"/>
+  <view class="content">
+    <text class="name">日本鹤梅完熟果肉梅酒</text>
+    <text class="price">￥180</text>
+  </view>
+</view>
+
+<view class="items">
+  <view class="item">
+    <label for="count">数量</label>
+    <view class="count">
+      <button type="button" bindtap="reduce"><image src="./imgs/reduce.png" class="reduce" background-size="cover"/></button>
+      <input disabled id="count" value="{{count}}" type="number"/>
+      <button type="button" bindtap="add"><image src="./imgs/add.png" class="add" background-size="cover"/></button>
+    </view>
+  </view>
+  <view class="item">
+    <label for="name">姓名</label>
+    <input id="name" value="{{userInfo.nickName}}" placeholder="输入姓名" type="text" />
+  </view>
+  <view class="item">
+    <label for="mobile">联系电话</label>
+    <input id="mobile" placeholder="输入手机号" maxlength="11" type="number" />
+  </view>
+</view>
+
+
+<view style="padding-bottom: 96rpx;"></view>
+<button class="buyBtn">￥12.00 立即购买</button>

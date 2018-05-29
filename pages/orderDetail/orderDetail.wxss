@@ -56,7 +56,15 @@ page {
   height: 240rpx;
 }
 
-.orderDetail .body text {
+.orderDetail .body .code {
+  display: block;
+  color: #000;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.orderDetail .body view text {
   vertical-align: middle;
 }
 

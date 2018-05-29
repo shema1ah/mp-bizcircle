@@ -11,7 +11,9 @@
   </view>
   <view class="body">
     <image src="./imgs/qrcode.png" background-size="cover"/>
-    <view><text class="dot"></text><text>有效期 2016.6.10-2016.11.10</text></view>
+    <text class="code">ADge25679R27h</text>
+    <view><text class="dot"></text><text>有效时间 2016.6.10-2016.11.10</text></view>
+    <view><text class="dot"></text><text decode>兑换时间 10:00 - 20:30　　　</text></view>
   </view>
   <view class="footer">
     <image class="shopicon" src="../../imgs/goods.jpg" background-size="cover"/>
@@ -22,7 +24,7 @@
     <image class="mobile" src="./imgs/mobile.png" background-size="cover"/>
     <view class="semicircle"></view><view class="semicircle right"></view>
   </view>
-  <view class="shoplist">
+  <view class="shoplist" bindtap="goShopList">
     <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
     <text>6家FIKAFIKA连锁店</text>
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>

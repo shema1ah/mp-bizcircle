@@ -26,3 +26,29 @@ button::after {
   background-color: #FF8100;
   color: #fff;
 }
+
+.loading {
+  color: #2F323A;
+  text-align: center;
+  background-color: #fff;
+  line-height: 3;
+}
+.loading image, .loading text {
+  vertical-align: middle;
+}
+.loading image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+  animation: rotate 0.8s linear infinite;
+}
+
+@-webkit-keyframes rotate
+{
+  0% {
+    -webkit-transform:rotate(0deg);
+  }
+  100% {
+    -webkit-transform:rotate(360deg);
+  }
+}

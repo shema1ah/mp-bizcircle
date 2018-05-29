@@ -47,3 +47,6 @@
     <image src="../../imgs/goods2.jpg" background-size="cover"/>
   </view>
 </view>
+
+<view style="padding-bottom: 96rpx;"></view>
+<button class="buyBtn">￥12.00直接购买</button>
