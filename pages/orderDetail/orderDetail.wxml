@@ -1,19 +1,25 @@
-<view class="orderDetail">
+<view class="orderDetail {{status}}">
+  <image class="payDone" src="./imgs/checked.png" background-size="cover"/>
   <view class="header">
     <image src="../../imgs/goods.jpg" background-size="cover"/>
     <view class="content">
       <text class="name">日本鹤梅完熟果肉梅酒</text>
       <view>
-        <text class="price">￥180</text>
+        <text class="price">￥180<text class="origin">￥200</text></text>
         <text>x 1</text>
       </view>
     </view>
   </view>
   <view class="body">
+    <view wx:if="{{status === 'done' || status === 'expire'}}" class="status">
+      <text>{{status === 'done' ? '已兑换' : '已过期'}}</text>
+    </view>
     <image src="./imgs/qrcode.png" background-size="cover"/>
     <text class="code">ADge25679R27h</text>
-    <view><text class="dot"></text><text>有效时间 2016.6.10-2016.11.10</text></view>
-    <view><text class="dot"></text><text decode>兑换时间 10:00 - 20:30　　　</text></view>
+    <view>
+      <text><text class="dot"></text>有效时间 2016.6.10-2016.11.10</text>
+      <text><text class="dot"></text>兑换时间 10:00 - 20:30</text>
+    </view>
   </view>
   <view class="footer">
     <image class="shopicon" src="../../imgs/goods.jpg" background-size="cover"/>
@@ -30,3 +36,4 @@
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>
   </view>
 </view>
+<text class="tip">* 注意事项：请在周一到周五指定时间段内到店兑换，购买后可在有效期内使用，过期无效，无退款。</text>

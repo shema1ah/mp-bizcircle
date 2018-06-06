@@ -1,56 +1,49 @@
-<view>
-  <view class="header">
-    <view class="main">
-      <image src="./imgs/sale.png" background-size="cover"></image>
-      <view>
-        <text class="title">超值抢购</text>
-        <text class="content">精品特卖，周边优惠享不停</text>
-      </view>
-    </view>
-    <text class="count">{{current + 1}}<text>/3</text></text>
-  </view>
+<wxs module="filter" src="../../utils/filter.wxs"/>
 
-  <swiper current="{{current}}" circular bindchange="slideSwiper" duration="600" style="height: 628rpx;" previous-margin="40rpx" next-margin="40rpx">
-    <block wx:for="{{swipers}}" wx:key="{{item.id}}">
-      <swiper-item>
-        <image class="swiper-image" src="{{item.cover_url}}" />
-        <text class="count">已售 209</text>
-        <view class="swiper-info">
-          <view>
-            <text class="name">鲜榨芒果汁</text>
-            <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
-          </view>
-          <button class="primary-button" bindtap="buyBtn">抢购</button>
-        </view>
-      </swiper-item>
-    </block>
-  </swiper>
-
-  <view class="goods">
-    <image src="../../imgs/goods-small2.jpg" background-size="cover"></image>
-    <view class="content">
-      <text class="name">鲜榨芒果汁低卡套餐燕麦火腿三明治＋鲜榨果汁</text>
-      <view class="footer">
-        <view>
-          <text class="number">已售 209</text>
-          <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
-        </view>
-        <button class="primary-button" bindtap="buyBtn">购买</button>
-      </view>
+<view class="header">
+  <view class="main">
+    <image src="./imgs/sale.png" background-size="cover"></image>
+    <view>
+      <text class="title">超值抢购</text>
+      <text class="content">精品特卖，周边优惠享不停</text>
     </view>
   </view>
-  <view class="goods">
-    <image src="../../imgs/goods-small.jpg" background-size="cover"></image>
-    <view class="content">
-      <text class="name">鲜榨芒果汁低卡套餐燕麦火腿三明治＋鲜榨果汁</text>
-      <view class="footer">
-        <view>
-          <text class="number">已售 209</text>
-          <text class="price"><text>￥</text>180<text class="origin">￥200</text></text>
-        </view>
-        <button class="primary-button" bindtap="buyBtn">购买</button>
-      </view>
-    </view>
-  </view>
-  <view style="height: 30rpx"></view>
+  <text class="count">{{current + 1}}<text>/{{swipers.length}}</text></text>
 </view>
+
+<swiper current="{{current}}" circular bindchange="slideSwiper" duration="600" style="height: 628rpx;" previous-margin="40rpx" next-margin="40rpx">
+  <block wx:for="{{swipers}}" wx:key="{{item.id}}">
+    <swiper-item id="{{item.id}}" bindtap="goodsDetail">
+      <image class="swiper-image" src="{{item.img}}" />
+      <text class="count">已售 {{item.bought}}</text>
+      <view class="swiper-info">
+        <view>
+          <text class="name">{{item.name}}</text>
+          <text class="price"><text>￥</text>{{filter.formatCurrency(item.txamt)}}<text class="origin">￥{{filter.formatCurrency(item.origamt)}}</text></text>
+        </view>
+        <button wx:if="{{item.total > item.bought}}" class="primary-button" bindtap="buyBtn">抢购</button>
+        <button wx:else class="primary-button" bindtap="buyBtn">售罄</button>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<block wx:for="{{goods}}" wx:key="{{item.id}}">
+  <view class="goods" id="{{item.id}}" bindtap="goodsDetail">
+    <image src="{{item.img}}" background-size="cover"></image>
+    <view class="content">
+      <text class="name">{{item.name}}</text>
+      <view class="footer">
+        <view>
+          <text class="number">已售 {{item.bought}}</text>
+          <text class="price"><text>￥</text>{{item.txamt}}<text class="origin">￥{{item.origamt}}</text></text>
+        </view>
+        <button class="primary-button" bindtap="buyBtn">购买</button>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="loading" hidden="{{!isLoading}}">
+  <image src="../../imgs/loading.png" background-size="cover"></image><text>加载中...</text>
+</view>
+<view style="height: 30rpx"></view>

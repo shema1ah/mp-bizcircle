@@ -1,15 +1,15 @@
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {}
+    status: '', // 'order', 'done', 'expire'
   },
   goShopList() {
-    console.log('goShopList')
     wx.navigateTo({
       url: '../subStore/subStore'
     })
   },
   onLoad() {
-
+    this.setData({
+      status: 'expire'
+    })
   }
 })

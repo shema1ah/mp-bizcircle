@@ -1,0 +1,22 @@
+var formatCurrency = function (number) {
+  if (isNaN(number)) return
+  if (number % 100 === 0) {
+    number = (number / 100).toFixed(2)
+  } else {
+    number = Number((number / 100).toFixed(2))
+  }
+  return number
+}
+
+var formatDate = function (string) {
+  console.log(typeof string)
+  if (!string) return
+  var reg = getRegExp('\s')
+  string = string.split(reg)[0]
+  return string
+}
+
+module.exports = {
+  formatCurrency: formatCurrency,
+  formatDate: formatDate
+}

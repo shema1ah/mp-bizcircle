@@ -2,13 +2,16 @@ Page({
   data: {
     orders: [{
       id: '123',
-      name: '订单1'
+      name: '订单1',
+      status: 1
     }, {
       id: '456',
-      name: '订单2'
+      name: '订单2',
+      status: 2
     }, {
       id: '789',
-      name: '订单3'
+      name: '订单3',
+      status: 3
     }],
     count: 10,
     isLoading: false,

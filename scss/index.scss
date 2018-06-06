@@ -111,6 +111,7 @@ swiper-item {
     @extend %flex-between;
     align-items: flex-end;
     .price {
+      display: block;
       line-height: 1;
     }
     button {

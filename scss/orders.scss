@@ -49,7 +49,7 @@
       @include circle(100rpx);
       border: 4rpx solid #B2B2B2;
       text-align: center;
-      transform: rotate(45deg);
+      transform: rotate(30deg);
       margin-right: -10rpx;
       text {
         display: inline-block;
@@ -69,4 +69,11 @@
       }
     }
   }
+}
+
+.nomore {
+  font-size: 26rpx;
+  padding-top: 30vh;
+  text-align: center;
+  color: #8A8C92;
 }

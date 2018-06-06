@@ -129,6 +129,7 @@ swiper-item .count {
 }
 
 .goods .footer .price {
+  display: block;
   line-height: 1;
 }
 

@@ -1,34 +1,48 @@
-//index.js
-//获取应用实例
-var app = getApp()
+var config = require('../../utils/config.js')
+
 Page({
   data: {
-    swipers: [{
-      id: '1',
-      cover_url: '../../imgs/goods.jpg'
-    }, {
-      id: '2',
-      cover_url: '../../imgs/goods2.jpg'
-    }, {
-      id: '3',
-      cover_url: '../../imgs/goods3.jpg'
-    }]
+    swipers: [],
+    goodsInfo: {},
+    mchntInfo: {},
+    promoInfo: {}
   },
-  //事件处理函数
-  bindViewTap() {
+  goShopList() {
+    console.log('goShopList')
+    console.log(this.data.mchntInfo.enuserid)
     wx.navigateTo({
-      url: '../logs/logs'
+      url: `../subStore/subStore?enuserid=${this.data.mchntInfo.enuserid}`
     })
   },
-  onLoad() {
-    console.log('onLoad')
-    let that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo((userInfo) => {
-      //更新数据
-      that.setData({
-        userInfo
-      })
+  goMakeOrder() {
+    wx.navigateTo({
+      url: '../makeOrder/makeOrder'
+    })
+  },
+  call(event) {
+    wx.makePhoneCall({
+      phoneNumber: event.target.dataset.number
+    })
+  },
+  onLoad(options) {
+    this.fetchData(options.id)
+  },
+  fetchData(id = '6409712364848801191') {
+    let _this = this
+    wx.request({
+      url: `${config.host}/mtm/promo/info`,
+      data: {
+        id
+      },
+      success: function(res) {
+        let promo = res.data.data.promo
+        _this.setData({
+          swipers: promo.goods_info.imgs,
+          mchntInfo: promo.mchnt_info,
+          goodsInfo: promo.goods_info,
+          promoInfo: promo
+        })
+      }
     })
   }
 })

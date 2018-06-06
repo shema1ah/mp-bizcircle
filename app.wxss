@@ -2,6 +2,9 @@ page {
   background-color: #f7f7f7;
   font-size: 24rpx;
 }
+button {
+  margin: 0;
+}
 button::after {
   border: none;
 }
@@ -20,11 +23,15 @@ button::after {
 }
 
 .primary-button {
-  margin: 0;
-  border: none;
   font-size: 28rpx;
   background-color: #FF8100;
   color: #fff;
+}
+
+.info-button {
+  font-size: 28rpx;
+  background-color: #E5E5E5;
+  color: #8A8C92;
 }
 
 .loading {

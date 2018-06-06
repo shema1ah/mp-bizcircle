@@ -1,66 +1,5 @@
-<view bindtap="goOrderDetail" class="order">
-  <view class="header">
-    <text>订单编号：12345678909876543</text>
-    <text class="status">未兑换</text>
-  </view>
-  <view class="body">
-    <image src="../../imgs/goods.jpg" background-size="cover"></image>
-    <view class="content">
-      <view class="title">
-        <text class="name">日本鹤梅完熟果肉梅酒</text>
-      </view>
-      <view class="footer">
-        <text class="price">￥180<text class="origin">￥200</text></text>
-        <text>x 1</text>
-      </view>
-    </view>
-  </view>
-</view>
-
-<view bindtap="goOrderDetail" class="order done">
-  <view class="header">
-    <text class="">订单编号：12345678909876543</text>
-  </view>
-  <view class="body">
-    <image src="../../imgs/goods.jpg" background-size="cover"></image>
-    <view class="content">
-      <view class="title">
-        <text class="name">日本鹤梅完熟果肉梅酒</text>
-        <view class="status">
-          <text>已兑换</text>
-        </view>
-      </view>
-      <view class="footer">
-        <text class="price">￥180<text class="origin">￥200</text></text>
-        <text>x 1</text>
-      </view>
-    </view>
-  </view>
-</view>
-
-<view bindtap="goOrderDetail" class="order done">
-  <view class="header">
-    <text class="">订单编号：12345678909876543</text>
-  </view>
-  <view class="body">
-    <image src="../../imgs/goods.jpg" background-size="cover"></image>
-    <view class="content">
-      <view class="title">
-        <text class="name">日本鹤梅完熟果肉梅酒</text>
-        <view class="status">
-          <text>已过期</text>
-        </view>
-      </view>
-      <view class="footer">
-        <text class="price">￥180<text class="origin">￥200</text></text>
-        <text>x 1</text>
-      </view>
-    </view>
-  </view>
-</view>
-
 <block wx:for="{{orders}}" wx:key="{{item.id}}">
-  <view bindtap="goOrderDetail" class="order done">
+  <view bindtap="goOrderDetail" class="order {{item.status === 1 ? '' : 'done'}}">
     <view class="header">
       <text class="">订单编号：12345678909876543</text>
     </view>
@@ -69,8 +8,8 @@
       <view class="content">
         <view class="title">
           <text class="name">{{item.name}}</text>
-          <view class="status">
-            <text>已过期</text>
+          <view wx:if="{{item.status === 2 || item.status === 3}}" class="status">
+            <text>{{item.status === 2 ? '已兑换' : '已过期'}}</text>
           </view>
         </view>
         <view class="footer">
@@ -81,6 +20,9 @@
     </view>
   </view>
 </block>
+<view class="nomore" hidden="{{orders.length > 0}}">
+  <text>暂无相关订单</text>
+</view>
 
 <view class="loading" hidden="{{isLoading}}">
   <image src="../../imgs/loading.png" background-size="cover"></image><text>加载中...</text>

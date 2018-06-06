@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "本地资讯"
+  "navigationBarTitleText": "商品详情",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black"
 }
