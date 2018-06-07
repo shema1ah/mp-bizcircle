@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
-	"appid": "wx89c275e03303fe1f",
-	"projectname": "store",
+	"appid": "wx11050bbebe8066d6",
+	"projectname": "storetest2",
 	"condition": {
 		"search": {
 			"current": -1,

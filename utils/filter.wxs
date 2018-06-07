@@ -9,14 +9,28 @@ var formatCurrency = function (number) {
 }
 
 var formatDate = function (string) {
-  console.log(typeof string)
   if (!string) return
   var reg = getRegExp('\s')
   string = string.split(reg)[0]
   return string
 }
 
+var formatStatus = function (number) {
+  if (isNaN(number)) return
+  switch (number) {
+    case 0:
+      return 'order'
+    case 1:
+      return 'done'
+    case 2:
+      return 'expire'
+    default:
+      return 'order'
+  }
+}
+
 module.exports = {
   formatCurrency: formatCurrency,
-  formatDate: formatDate
+  formatDate: formatDate,
+  formatStatus: formatStatus
 }

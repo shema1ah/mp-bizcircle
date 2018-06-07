@@ -1,39 +1,40 @@
-<view class="orderDetail {{status}}">
+<wxs module="filter" src="../../utils/filter.wxs"/>
+<view class="orderDetail {{filter.formatStatus(promoInfo.status)}}">
   <image class="payDone" src="./imgs/checked.png" background-size="cover"/>
   <view class="header">
-    <image src="../../imgs/goods.jpg" background-size="cover"/>
+    <image src="{{goodsInfo.img}}" background-size="cover"/>
     <view class="content">
-      <text class="name">日本鹤梅完熟果肉梅酒</text>
+      <text class="name">{{goodsInfo.name}}</text>
       <view>
-        <text class="price">￥180<text class="origin">￥200</text></text>
-        <text>x 1</text>
+        <text class="price">￥{{filter.formatCurrency(goodsInfo.txamt)}}<text class="origin">￥{{filter.formatCurrency(goodsInfo.origamt)}}</text></text>
+        <text>x {{goodsInfo.goods_cnt}}</text>
       </view>
     </view>
   </view>
   <view class="body">
-    <view wx:if="{{status === 'done' || status === 'expire'}}" class="status">
-      <text>{{status === 'done' ? '已兑换' : '已过期'}}</text>
+    <view wx:if="{{promoInfo.status === 1 || promoInfo.status === 2}}" class="status">
+      <text>{{promoInfo.status === 1 ? '已兑换' : '已过期'}}</text>
     </view>
     <image src="./imgs/qrcode.png" background-size="cover"/>
-    <text class="code">ADge25679R27h</text>
+    <text class="code">{{promoInfo.redeemCode}}</text>
     <view>
-      <text><text class="dot"></text>有效时间 2016.6.10-2016.11.10</text>
-      <text><text class="dot"></text>兑换时间 10:00 - 20:30</text>
+      <text><text class="dot"></text>有效时间 {{filter.formatDate(promoInfo.redeem_stime)}} 至 {{filter.formatDate(promoInfo.redeem_etime)}}</text>
+      <text wx:if="{{promoInfo.time_limit}}"><text class="dot"></text>兑换时间 {{promoInfo.time_limit[0][0]}}-{{promoInfo.time_limit[0][1]}}</text>
     </view>
   </view>
   <view class="footer">
-    <image class="shopicon" src="../../imgs/goods.jpg" background-size="cover"/>
+    <image class="shopicon" src="{{mchntInfo.logo_url}}" background-size="cover"/>
     <view>
-      <text class="shopname">FIKAFIKA(望京SOHO店)</text>
-      <text>北京市朝阳区 望京SOHO 中心广场负一层1021 地址很长</text>
+      <text class="shopname">{{mchntInfo.shopname}}</text>
+      <text>{{mchntInfo.address}}</text>
     </view>
-    <image class="mobile" src="./imgs/mobile.png" background-size="cover"/>
+    <image class="mobile" data-number="{{mchntInfo.telephone}}" bindtap="call" src="./imgs/mobile.png" background-size="cover"/>
     <view class="semicircle"></view><view class="semicircle right"></view>
   </view>
   <view class="shoplist" bindtap="goShopList">
     <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
-    <text>6家FIKAFIKA连锁店</text>
+    <text>{{mchntInfo.shop_num}}家{{mchntInfo.shopname}}连锁店</text>
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>
   </view>
 </view>
-<text class="tip">* 注意事项：请在周一到周五指定时间段内到店兑换，购买后可在有效期内使用，过期无效，无退款。</text>
+<text wx:if="{{promoInfo.exchange_info}}" class="tip">* 注意事项：{{promoInfo.exchange_info}}</text>

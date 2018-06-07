@@ -1,69 +1,91 @@
+var config = require('../../utils/config.js')
+var app = getApp()
 Page({
   data: {
-    orders: [{
-      id: '123',
-      name: '订单1',
-      status: 1
-    }, {
-      id: '456',
-      name: '订单2',
-      status: 2
-    }, {
-      id: '789',
-      name: '订单3',
-      status: 3
-    }],
+    csid: '',
+    orders: [],
+    page: 0,
     count: 10,
     isLoading: false,
-    userInfo: {}
+    isOver: false
   },
-  goOrderDetail() {
+  goOrderDetail(event) {
+    console.log(event)
     wx.navigateTo({
-      url: '../orderDetail/orderDetail'
+      url: `../orderDetail/orderDetail?orderId=${event.currentTarget.id}`
     })
   },
   onLoad() {
-    console.log('onLoad')
+    console.log('order onLoad')
+    let _this = this
+    wx.getStorage({
+      key: 'csid',
+      success: function(res) {
+        console.log('success getStorage')
+        console.log(res.data)
+        if (res.data) {
+          _this.setData({
+            csid: res.data
+          })
+          _this.fetchData()
+        }
+      },
+      fail: function() {
+        console.log('fail getStorage')
+      }
+    })
+  },
+  bindGetUserInfo(e) {
+    let _this = this
+    let detail = {}
+    detail.encryptedData = e.detail.encryptedData
+    detail.iv = e.detail.iv
+    app.login(detail, app.globalData.code, (csid) => {
+      console.log(csid)
+      _this.setData({
+        csid
+      })
+    })
+  },
+  fetchData() {
+    console.log('fetchData')
+    this.setData({
+      isLoading: true
+    })
+    let _this = this
+    wx.request({
+      url: `${config.host}/mtm/order/list`,
+      data: {
+        type: 3,
+        page: _this.data.page,
+        pagesize: 10
+      },
+      header: {
+        'QF_CSID': this.data.csid
+      },
+      success: function(res) {
+        let result = res.data.data.orders
+        let orders = _this.data.orders.concat(result)
+        _this.setData({
+          orders,
+          page: _this.data.page + 1,
+          isLoading: false
+        })
+        if (result.length < 10) {
+          _this.setData({
+            isOver: true
+          })
+        }
+      }
+    })
   },
   onPullDownRefresh() {
     console.log('onPullDownRefresh')
     wx.stopPullDownRefresh()
   },
   onReachBottom() {
-    this.setData({
-      isLoading: true
-    })
-    console.log('onReachBottom')
-    let count = this.data.count + 1
-    let orders = this.data.orders.concat([{
-      id: '789',
-      name: '订单' + count
-    }, {
-      id: '012',
-      name: '订单' + (count + 1)
-    }, {
-      id: '012',
-      name: '订单' + (count + 2)
-    }, {
-      id: '012',
-      name: '订单' + (count + 3)
-    }, {
-      id: '012',
-      name: '订单' + (count + 4)
-    }, {
-      id: '012',
-      name: '订单' + (count + 5)
-    }, {
-      id: '012',
-      name: '订单' + (count + 6)
-    }, {
-      id: '012',
-      name: '订单' + (count + 7)
-    }])
-    this.setData({
-      orders,
-      count,
-      isLoading: false
-    })
+    if (!this.data.isOver) {
+      this.fetchData()
+    }
   }
 })

@@ -43,6 +43,10 @@
   border-top: 1rpx solid #e5e5e5;
 }
 
+.items .item .wechat-button {
+  font-size: 24rpx;
+}
+
 .items label {
   color: #2F323A;
 }
@@ -90,7 +94,7 @@
   background-color: #ccc;
 }
 
-.buyBtn {
+.fixed-bottom-button {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -98,7 +102,5 @@
   height: 96rpx;
   line-height: 96rpx;
   font-weight: 300;
-  background-color: #FF8100;
-  color: #fff;
   border-radius: 0;
 }

@@ -2,21 +2,21 @@ var config = require('../../utils/config.js')
 
 Page({
   data: {
+    csid: '',
     swipers: [],
     goodsInfo: {},
     mchntInfo: {},
     promoInfo: {}
   },
   goShopList() {
-    console.log('goShopList')
-    console.log(this.data.mchntInfo.enuserid)
     wx.navigateTo({
       url: `../subStore/subStore?enuserid=${this.data.mchntInfo.enuserid}`
     })
   },
   goMakeOrder() {
+    let goodsInfo = this.data.goodsInfo
     wx.navigateTo({
-      url: '../makeOrder/makeOrder'
+      url: `../makeOrder/makeOrder?promoId=${this.data.promoInfo.id}&goodsId=${goodsInfo.id}&goodsName=${goodsInfo.name}&goodsTxamt=${goodsInfo.txamt}&goodsImg=${goodsInfo.img}`
     })
   },
   call(event) {
@@ -33,6 +33,9 @@ Page({
       url: `${config.host}/mtm/promo/info`,
       data: {
         id
+      },
+      header: {
+        'QF_CSID': this.data.csid
       },
       success: function(res) {
         let promo = res.data.data.promo

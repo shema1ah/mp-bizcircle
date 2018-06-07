@@ -1,29 +1,36 @@
-<block wx:for="{{orders}}" wx:key="{{item.id}}">
-  <view bindtap="goOrderDetail" class="order {{item.status === 1 ? '' : 'done'}}">
-    <view class="header">
-      <text class="">订单编号：12345678909876543</text>
-    </view>
-    <view class="body">
-      <image src="../../imgs/goods.jpg" background-size="cover"></image>
-      <view class="content">
-        <view class="title">
-          <text class="name">{{item.name}}</text>
-          <view wx:if="{{item.status === 2 || item.status === 3}}" class="status">
-            <text>{{item.status === 2 ? '已兑换' : '已过期'}}</text>
+<wxs module="filter" src="../../utils/filter.wxs"/>
+<view wx:if="{{csid}}" style="padding-bottom:20rpx;">
+  <block wx:for="{{orders}}" wx:key="{{item.id}}">
+    <view id="{{item.id}}" bindtap="goOrderDetail" class="order {{item.status === 0 ? '' : 'done'}}">
+      <view class="header">
+        <text class="">订单编号：{{item.id}}</text>
+      </view>
+      <view class="body">
+        <image src="{{item.goods_info[0].img}}" background-size="cover"></image>
+        <view class="content">
+          <view class="title">
+            <text class="name">{{item.goods_info[0].name}}</text>
+            <view wx:if="{{item.promo_state === 1 || item.promo_state === 2}}" class="status">
+              <text>{{item.status === 2 ? '已兑换' : '已过期'}}</text>
+            </view>
           </view>
-        </view>
-        <view class="footer">
-          <text class="price">￥180<text class="origin">￥200</text></text>
-          <text>x 1</text>
+          <view class="footer">
+            <text class="price">￥{{filter.formatCurrency(item.goods_info[0].txamt)}}<text class="origin">￥{{filter.formatCurrency(item.goods_info[0].origamt)}}</text></text>
+            <text>x {{item.goods_info[0].goods_cnt}}</text>
+          </view>
         </view>
       </view>
     </view>
+  </block>
+  <view class="nomore" hidden="{{orders.length > 0}}">
+    <text>暂无相关订单</text>
   </view>
-</block>
-<view class="nomore" hidden="{{orders.length > 0}}">
-  <text>暂无相关订单</text>
+  <view class="loading" hidden="{{!isLoading}}">
+    <image src="../../imgs/loading.png" background-size="cover"></image><text>加载中...</text>
+  </view>
 </view>
-
-<view class="loading" hidden="{{isLoading}}">
-  <image src="../../imgs/loading.png" background-size="cover"></image><text>加载中...</text>
+<view wx:else class="login">
+  <view>
+    <button class="wechat-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录查看订单列表</button>
+  </view>
 </view>

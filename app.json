@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/goodsDetail/goodsDetail",
     "pages/subStore/subStore",
+    "pages/makeOrder/makeOrder",
+    "pages/goodsDetail/goodsDetail",
     "pages/orders/orders",
     "pages/orderDetail/orderDetail",
-    "pages/makeOrder/makeOrder",
     "pages/webView/webView"
   ],
   "window":{

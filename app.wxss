@@ -34,6 +34,12 @@ button::after {
   color: #8A8C92;
 }
 
+.wechat-button {
+  font-size: 28rpx;
+  background-color: #1AAD19;
+  color: #fff;
+}
+
 .loading {
   color: #2F323A;
   text-align: center;
