@@ -63,7 +63,7 @@ Page({
         page
       },
       success: function(res) {
-        let promos = res.data.data.promos
+        let promos = res.data.data.promos || []
         let goods = _this.data.goods.concat(promos)
         _this.setData({
           goods: goods,

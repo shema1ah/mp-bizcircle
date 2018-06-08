@@ -56,7 +56,7 @@ Page({
         'QF_CSID': this.data.csid
       },
       success: function(res) {
-        let result = res.data.data.orders
+        let result = res.data.data.orders || []
         let orders = _this.data.orders.concat(result)
         _this.setData({
           orders,

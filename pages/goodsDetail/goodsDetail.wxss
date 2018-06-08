@@ -179,7 +179,6 @@ swiper-item image {
 .detail image {
   width: 100%;
   vertical-align: bottom;
-  margin-bottom: 20rpx;
 }
 
 .buyBtn {

@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"/>
 
-<view class="header">
+<view wx:if="{{swipers.length > 0}}" class="header">
   <view class="main">
     <image src="./imgs/sale.png" background-size="cover"></image>
     <view>
@@ -9,6 +9,9 @@
     </view>
   </view>
   <text class="count">{{current + 1}}<text>/{{swipers.length}}</text></text>
+</view>
+<view wx:else class="nomore">
+  <text>暂无相关特卖</text>
 </view>
 
 <swiper current="{{current}}" circular bindchange="slideSwiper" duration="600" style="height: 628rpx;" previous-margin="40rpx" next-margin="40rpx">
