@@ -21,6 +21,8 @@ Page({
     wx.getStorage({
       key: 'csid',
       success: function(res) {
+        console.log('success getStorage')
+        console.log(res.data)
         if (res.data) {
           _this.setData({
             csid: res.data
@@ -41,6 +43,7 @@ Page({
         'QF_CSID': _this.data.csid
       },
       success: function(res) {
+        console.log(res)
         let result = res.data.data
         let promo = Object.assign(result.promo, {
           status: result.promo_state,

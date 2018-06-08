@@ -10,8 +10,7 @@ Page({
     nickName:  '',
     mobile: '',
     isOrdering: false,
-    total: 0, // 订单总金额
-    buyNumber: 0 // 可购买数量
+    total: 0  // 订单总金额
   },
   add() {
     let count = this.data.count + 1
@@ -32,45 +31,22 @@ Page({
       total
     })
   },
-  noMoreGoods() {
-    let goodsInfo = this.data.goodsInfo
-    let buyNumber = this.data.buyNumber // 允许购买数
-    if (goodsInfo.total < this.data.count) {
-      // 库存不足
-      return `商品库存不足，还剩${goodsInfo.total}个可购买`
-    } else if (goodsInfo.buyLimit == 0) {
-      return 'nolimit'
-    } else if (buyNumber == goodsInfo.buyLimit && this.data.count > buyNumber) {
-      // 当前购买数 超过 允许购买数
-      return `本商品最多购买${buyNumber}个`
-    } else if (buyNumber < goodsInfo.buyLimit && this.data.count > buyNumber) {
-      return `本商品最多购买${goodsInfo.buyLimit}个，您已购买过${goodsInfo.buyLimit - this.data.buyNumber}个`
-    } else {
-      return 'pass'
-    }
-  },
   onLoad(options) {
+    console.log('onLoad detail')
     let _this = this
     let info = {}
     info.id = options.goodsId
     info.img = options.goodsImg
     info.name = options.goodsName
     info.txamt = options.goodsTxamt
-    info.total = options.goodsTotal
-    info.buyLimit = options.buyLimit
-    this.setData({
-      promoId: options.promoId,
-      goodsInfo: info,
-      total: options.goodsTxamt // 默认1件商品
-    })
     wx.getStorage({
       key: 'csid',
       success: function(res) {
         if (res.data) {
+          _this.fetchData()
           _this.setData({
             csid: res.data
           })
-          _this.fetchCustomerInfo(res.data)
         }
       }
     })
@@ -84,6 +60,11 @@ Page({
         }
       }
     })
+    this.setData({
+      promoId: options.promoId,
+      goodsInfo: info,
+      total: options.goodsTxamt // 默认1件商品
+    })
   },
   bindNickNameInput(e) {
     this.setData({
@@ -96,7 +77,7 @@ Page({
     })
   },
   bindGetUserInfo(e) {
-    // 微信授权获取 userInfo
+    console.log(e)
     let _this = this
     let detail = {}
     detail.encryptedData = e.detail.encryptedData
@@ -106,31 +87,14 @@ Page({
       nickName: detail.nickName
     })
     app.login(detail, app.globalData.code, (csid) => {
+      console.log(csid)
       _this.setData({
         csid
       })
     })
   },
-  fetchCustomerInfo (csid) {
-    let _this = this
-    wx.request({
-      url: `${config.host}/mtm/promo/customer_info`,
-      data: {
-        promo_id: this.data.promoId
-      },
-      header: {
-        'QF_CSID': csid
-      },
-      success: function(res) {
-        if (res.data.respcd === '0000') {
-          let customerInfo = res.data.data.customer_info
-          _this.setData({
-            buyNumber: customerInfo.customer_buy_num,
-            mobile: customerInfo.mobile
-          })
-        }
-      }
-    })
+  fetchData () {
+
   },
   login (detail, code) {
     let _this = this
@@ -162,15 +126,6 @@ Page({
     })
   },
   makeOrder () {
-    let msg = this.noMoreGoods()
-    if (msg !== 'pass' && msg !== 'nolimit') {
-      wx.showToast({
-        icon: 'none',
-        title: msg,
-        duration: 2000
-      })
-      return false
-    }
     if (!this.data.nickName) {
       wx.showToast({
         title: '姓名不能为空',
@@ -212,23 +167,18 @@ Page({
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'QF_CSID': _this.data.csid
+        'QF_CSID': this.data.csid
       },
       success: function(res) {
-        let data = res.data.data
+        console.log(res)
+        console.log(res.data.respcd)
         if (res.data.respcd === '0000') {
-          _this.wechatPay(data.pay_params, data.out_trade_no)
-        } else {
-          wx.showToast({
-            icon: 'none',
-            title: res.data.resperr,
-            duration: 2000
-          })
+          _this.wechatPay(res.data.data.pay_params)
         }
       }
     })
   },
-  wechatPay (params, orderId) {
+  wechatPay (params) {
     let _this = this
     this.setData({
       isOrdering: true
@@ -240,6 +190,7 @@ Page({
       signType: 'MD5',
       paySign: params.paySign,
       success: function(res){
+        console.log('wechatPay success')
         wx.showToast({
           title: 'wechatPay success',
           icon: 'none',
@@ -248,9 +199,9 @@ Page({
         _this.setData({
           isOrdering: false
         })
-        _this.orderQuery(orderId)
       },
       fail: function(res){
+        console.log('wechatPay fail')
         wx.showToast({
           title: 'wechatPay fail',
           icon: 'none',
@@ -259,33 +210,6 @@ Page({
         _this.setData({
           isOrdering: false
         })
-      }
-    })
-  },
-  orderQuery (orderId) {
-    let _this = this
-    wx.request({
-      url: `${config.host}/mtm/order/query`,
-      data: {
-        order_id: orderId
-      },
-      header: {
-        'QF_CSID': _this.data.csid
-      },
-      success: function(res) {
-        let data = res.data
-        if (data.respcd === '0000' && data.data.state === 2) {
-          // 订单 支付成功
-          wx.navigateTo({
-            url: `../orderDetail/orderDetail?orderId=${orderId}`
-          })
-        } else {
-          wx.showToast({
-            icon: 'none',
-            title: data.resperr,
-            duration: 2000
-          })
-        }
       }
     })
   }

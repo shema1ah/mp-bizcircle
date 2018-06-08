@@ -10,21 +10,28 @@ Page({
     isOver: false
   },
   goOrderDetail(event) {
+    console.log(event)
     wx.navigateTo({
       url: `../orderDetail/orderDetail?orderId=${event.currentTarget.id}`
     })
   },
   onLoad() {
+    console.log('order onLoad')
     let _this = this
     wx.getStorage({
       key: 'csid',
       success: function(res) {
+        console.log('success getStorage')
+        console.log(res.data)
         if (res.data) {
           _this.setData({
             csid: res.data
           })
           _this.fetchData()
         }
+      },
+      fail: function() {
+        console.log('fail getStorage')
       }
     })
   },
@@ -34,22 +41,23 @@ Page({
     detail.encryptedData = e.detail.encryptedData
     detail.iv = e.detail.iv
     app.login(detail, app.globalData.code, (csid) => {
+      console.log(csid)
       _this.setData({
         csid
       })
     })
   },
-  fetchData(isRefresh) {
+  fetchData() {
+    console.log('fetchData')
     this.setData({
       isLoading: true
     })
-    let page = isRefresh ? 0 : this.data.page // 上拉刷新，只拿第一页数据
     let _this = this
     wx.request({
       url: `${config.host}/mtm/order/list`,
       data: {
         type: 3,
-        page,
+        page: _this.data.page,
         pagesize: 10
       },
       header: {
@@ -63,9 +71,6 @@ Page({
           page: _this.data.page + 1,
           isLoading: false
         })
-        if (isRefresh) {
-          wx.stopPullDownRefresh()
-        }
         if (result.length < 10) {
           _this.setData({
             isOver: true
@@ -75,7 +80,8 @@ Page({
     })
   },
   onPullDownRefresh() {
-    this.fetchData('1')
+    console.log('onPullDownRefresh')
+    wx.stopPullDownRefresh()
   },
   onReachBottom() {
     if (!this.data.isOver) {
