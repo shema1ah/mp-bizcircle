@@ -20,18 +20,21 @@
   </view>
   <view class="footer">
     <text><text class="dot"/><text>有效日期：{{filter.formatDate(promoInfo.redeem_stime)}} 至 {{filter.formatDate(promoInfo.redeem_etime)}}</text></text>
-    <text><text class="dot"/><text>兑换时间：{{promoInfo.time_limit[0][0]}}-{{promoInfo.time_limit[0][1]}}</text></text>
+    <text><text class="dot"/>
+      <text wx:if="{{promoInfo.time_limit}}">兑换时间：{{promoInfo.time_limit[0][0]}}-{{promoInfo.time_limit[0][1]}}</text>
+      <text wx:else>兑换时间：全天可兑换</text>
+    </text>
     <text><text class="dot"/>
       <text wx:if="{{promoInfo.buy_limit}}">本商品每人限购{{promoInfo.buy_limit}}个</text>
       <text wx:else>本商品不限购买个数</text>
     </text>
-    <text><text class="dot"/>注意事项：请在周一到周五指定时间段内到店兑换，购买后可在有效期内使用，过期无效，无退款。</text>
+    <text wx:if="{{promoInfo.exchange_info}}"><text class="dot"/>注意事项：{{promoInfo.exchange_info}}</text>
   </view>
 </view>
 
 <view class="outer" hidden="{{!mchntInfo.shopname}}">
   <view class="stores">
-    <image class="shopicon" src="{{mchntInfo.logo_url}}" background-size="cover"/>
+    <image class="shopicon" src="{{mchntInfo.logo_url || '../../imgs/shopLogo.png'}}" background-size="cover"/>
     <view>
       <text class="shopname">{{mchntInfo.shopname}}</text>
       <image class="mark" src="./imgs/mark.png" background-size="cover"/>
@@ -41,7 +44,7 @@
   </view>
   <view class="shoplist" bindtap="goShopList">
     <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
-    <text>{{mchntInfo.shop_num}}家{{mchntInfo.shopname}}</text>
+    <text>{{mchntInfo.shop_num}}家{{mchntInfo.big_shopname}}连锁店</text>
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>
   </view>
 </view>

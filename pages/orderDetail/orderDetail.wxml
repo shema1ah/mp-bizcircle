@@ -23,7 +23,7 @@
     </view>
   </view>
   <view class="footer">
-    <image class="shopicon" src="{{mchntInfo.logo_url}}" background-size="cover"/>
+    <image class="shopicon" src="{{mchntInfo.logo_url || '../../imgs/shopLogo.png'}}" background-size="cover"/>
     <view>
       <text class="shopname">{{mchntInfo.shopname}}</text>
       <text>{{mchntInfo.address}}</text>
@@ -33,7 +33,7 @@
   </view>
   <view class="shoplist" bindtap="goShopList">
     <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
-    <text>{{mchntInfo.shop_num}}家{{mchntInfo.shopname}}连锁店</text>
+    <text>{{mchntInfo.shop_num}}家{{mchntInfo.big_shopname}}连锁店</text>
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>
   </view>
 </view>

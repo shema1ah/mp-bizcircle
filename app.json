@@ -1,12 +1,11 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/goodsDetail/goodsDetail",
     "pages/subStore/subStore",
     "pages/makeOrder/makeOrder",
-    "pages/goodsDetail/goodsDetail",
     "pages/orders/orders",
-    "pages/orderDetail/orderDetail",
-    "pages/webView/webView"
+    "pages/orderDetail/orderDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -24,15 +23,15 @@
       "iconPath": "./imgs/index.png",
       "selectedIconPath": "./imgs/indexSelected.png"
     }, {
-      "pagePath": "pages/webView/webView",
-      "text": "好近商城",
-      "iconPath": "./imgs/shop.png",
-      "selectedIconPath": "./imgs/shopSelected.png"
-    }, {
       "pagePath": "pages/orders/orders",
       "text": "我的订单",
       "iconPath": "./imgs/order.png",
       "selectedIconPath": "./imgs/orderSelected.png"
+    }, {
+      "pagePath": "pages/index/index",
+      "text": "好近商城",
+      "iconPath": "./imgs/shop.png",
+      "selectedIconPath": "./imgs/shopSelected.png"
     }]
   }
 }
