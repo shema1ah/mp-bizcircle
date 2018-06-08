@@ -19,17 +19,9 @@ Page({
       url: `../goodsDetail/goodsDetail?id=${event.currentTarget.id}`
     })
   },
-  onLoad(options) {
+  onLoad() {
     this.fetchTop3()
     this.fetchData()
-  },
-  onTabItemTap(item) {
-    if (item.index == 2) {
-      wx.navigateToMiniProgram({
-        appId: 'wx46870f4a75c38822',
-        path: 'pages/home/dashboard/index'
-      })
-    }
   },
   fetchTop3() {
     let _this = this
@@ -47,11 +39,10 @@ Page({
       }
     })
   },
-  fetchData(isRefresh) {
+  fetchData() {
     this.setData({
       isLoading: true
     })
-    let page = isRefresh ? 0 : this.data.page // 上拉刷新，只拿第一页数据
     let _this = this
     wx.request({
       url: `${config.host}/mtm/promo/list`,
@@ -59,8 +50,8 @@ Page({
         userid: 12,
         type: 2,
         stick: 0, // 1 置顶 0 正常
-        pagesize: 10,
-        page
+        pagesize: 5,
+        page: this.data.page
       },
       success: function(res) {
         let promos = res.data.data.promos
@@ -70,10 +61,7 @@ Page({
           isLoading: false,
           page: _this.data.page + 1
         })
-        if (isRefresh) {
-          wx.stopPullDownRefresh()
-        }
-        if (promos.length < 10) {
+        if (promos.length < 5) {
           _this.setData({
             isOver: true
           })
@@ -85,8 +73,5 @@ Page({
     if (!this.data.isOver) {
       this.fetchData()
     }
-  },
-  onPullDownRefresh() {
-    this.fetchData('1')
   }
 })

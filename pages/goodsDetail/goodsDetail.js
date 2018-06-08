@@ -15,9 +15,8 @@ Page({
   },
   goMakeOrder() {
     let goodsInfo = this.data.goodsInfo
-    let promoInfo = this.data.promoInfo
     wx.navigateTo({
-      url: `../makeOrder/makeOrder?buyLimit=${promoInfo.buy_limit}&promoId=${promoInfo.id}&goodsId=${goodsInfo.id}&goodsTotal=${goodsInfo.total}&goodsName=${goodsInfo.name}&goodsTxamt=${goodsInfo.txamt}&goodsImg=${goodsInfo.img}`
+      url: `../makeOrder/makeOrder?promoId=${this.data.promoInfo.id}&goodsId=${goodsInfo.id}&goodsName=${goodsInfo.name}&goodsTxamt=${goodsInfo.txamt}&goodsImg=${goodsInfo.img}`
     })
   },
   call(event) {
@@ -28,7 +27,7 @@ Page({
   onLoad(options) {
     this.fetchData(options.id)
   },
-  fetchData(id = '6410453906085454491') {
+  fetchData(id = '6409712364848801191') {
     let _this = this
     wx.request({
       url: `${config.host}/mtm/promo/info`,

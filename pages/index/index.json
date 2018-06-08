@@ -1,6 +1,4 @@
 {
   "backgroundColor": "#f7f7f7",
-  "navigationBarTitleText": "好近精选",
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "black"
+  "navigationBarTitleText": "好近精选"
 }

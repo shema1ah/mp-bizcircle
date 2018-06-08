@@ -78,7 +78,6 @@
   text-align: center;
   transform: rotate(30deg);
   margin-right: -10rpx;
-  margin-top: -60rpx;
 }
 
 .content .title .status text {

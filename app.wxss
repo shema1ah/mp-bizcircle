@@ -1,7 +1,6 @@
 page {
   background-color: #f7f7f7;
   font-size: 24rpx;
-  -webkit-font-smoothing: antialiased;
 }
 button {
   margin: 0;
@@ -24,16 +23,19 @@ button::after {
 }
 
 .primary-button {
+  font-size: 28rpx;
   background-color: #FF8100;
   color: #fff;
 }
 
-.disable-button {
+.info-button {
+  font-size: 28rpx;
   background-color: #E5E5E5;
   color: #8A8C92;
 }
 
 .wechat-button {
+  font-size: 28rpx;
   background-color: #1AAD19;
   color: #fff;
 }

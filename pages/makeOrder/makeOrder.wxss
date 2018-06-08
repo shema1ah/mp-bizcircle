@@ -43,6 +43,10 @@
   border-top: 1rpx solid #e5e5e5;
 }
 
+.items .item .wechat-button {
+  font-size: 24rpx;
+}
+
 .items label {
   color: #2F323A;
 }

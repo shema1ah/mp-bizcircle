@@ -6,8 +6,8 @@ var host = '',
 
 // 测试配置
 if (ENV === 'test') {
-  host = 'https://o.qa.qfpay.net'
-  ohost = 'https://o.qa.qfpay.net'
+  host = 'apitest'
+  ohost = 'test'
 }
 // 本地配置
 if (ENV === 'dev') {
