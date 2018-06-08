@@ -1,4 +1,4 @@
-var ENV = 'dev'
+var ENV = 'test'
 
 // 生产配置
 var host = '',
@@ -6,8 +6,8 @@ var host = '',
 
 // 测试配置
 if (ENV === 'test') {
-  host = 'apitest'
-  ohost = 'test'
+  host = 'https://o.qa.qfpay.net'
+  ohost = 'https://o.qa.qfpay.net'
 }
 // 本地配置
 if (ENV === 'dev') {

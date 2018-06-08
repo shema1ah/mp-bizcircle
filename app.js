@@ -4,8 +4,6 @@ App({
     var that = this
     wx.login({
       success: function (res) {
-        console.log('app onLaunch')
-        console.log(res.code)
         that.globalData.code = res.code
       }
     })
@@ -19,8 +17,6 @@ App({
         appid: 'wx11050bbebe8066d6'
       },
       success: function(res) {
-        console.log('login success')
-        console.log(res)
         if (res.data.respcd === '0000') {
           let csid = res.data.data.csid
           wx.setStorage({
