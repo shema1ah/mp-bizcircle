@@ -21,8 +21,8 @@
           <text class="name">{{item.name}}</text>
           <text class="price"><text>￥</text>{{filter.formatCurrency(item.txamt)}}<text class="origin">￥{{filter.formatCurrency(item.origamt)}}</text></text>
         </view>
-        <button wx:if="{{item.total > item.bought}}" class="primary-button" bindtap="buyBtn">抢购</button>
-        <button wx:else class="primary-button" bindtap="buyBtn">售罄</button>
+        <button wx:if="{{item.total == 0}}" class="primary-button" bindtap="buyBtn">抢购</button>
+        <button wx:else class="disable-button" bindtap="buyBtn">售罄</button>
       </view>
     </swiper-item>
   </block>

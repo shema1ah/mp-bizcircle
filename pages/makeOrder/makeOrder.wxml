@@ -12,7 +12,7 @@
     <label for="count">数量</label>
     <view class="count">
       <button type="button" bindtap="reduce"><image src="./imgs/reduce.png" class="reduce" background-size="cover"/></button>
-      <input disabled id="count" value="{{count}}" type="number"/>
+      <input class="{{conut > buyNumber ? 'red' : ''}}" disabled id="count" value="{{count}}" type="number"/>
       <button type="button" bindtap="add"><image src="./imgs/add.png" class="add" background-size="cover"/></button>
     </view>
   </view>
@@ -25,8 +25,6 @@
     <input id="mobile" value="{{mobile}}" bindinput="bindMobileInput" placeholder="输入手机号" maxlength="11" type="number" />
   </view>
 </view>
-
-<button open-type="openSetting">打开设置</button>
 
 <view style="padding-bottom: 96rpx;"></view>
 <button wx:if="{{!csid}}" class="wechat-button fixed-bottom-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">获取用户信息</button>

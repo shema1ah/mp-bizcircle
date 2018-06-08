@@ -1,9 +1,10 @@
 <wxs module="filter" src="../../utils/filter.wxs"/>
-<view wx:if="{{csid}}" style="padding-bottom:20rpx;">
+<view wx:if="{{csid}}" style="padding-bottom:20rpx">
   <block wx:for="{{orders}}" wx:key="{{item.id}}">
     <view id="{{item.id}}" bindtap="goOrderDetail" class="order {{item.status === 0 ? '' : 'done'}}">
       <view class="header">
-        <text class="">订单编号：{{item.id}}</text>
+        <text>订单编号：{{item.id}}</text>
+        <text wx:if="{{item.promo_state === 0}}" style="color:#FF8100">未兑换</text>
       </view>
       <view class="body">
         <image src="{{item.goods_info[0].img}}" background-size="cover"></image>
@@ -11,7 +12,7 @@
           <view class="title">
             <text class="name">{{item.goods_info[0].name}}</text>
             <view wx:if="{{item.promo_state === 1 || item.promo_state === 2}}" class="status">
-              <text>{{item.status === 2 ? '已兑换' : '已过期'}}</text>
+              <text>{{item.promo_state === 1 ? '已兑换' : '已过期'}}</text>
             </view>
           </view>
           <view class="footer">
@@ -29,7 +30,7 @@
     <image src="../../imgs/loading.png" background-size="cover"></image><text>加载中...</text>
   </view>
 </view>
-<view wx:else class="login">
+<view wx:else class="login" hidden="{{csid}}">
   <view>
     <button class="wechat-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录查看订单列表</button>
   </view>
