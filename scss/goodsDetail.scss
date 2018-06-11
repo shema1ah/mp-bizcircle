@@ -18,7 +18,7 @@ swiper-item image {
   .body {
     padding: 0 30rpx 18rpx;
     @extend %flex-between;
-    align-items: center;
+    align-items: baseline;
     .price {
       font-size: 50rpx;
       text {
@@ -27,6 +27,7 @@ swiper-item image {
     }
     .number {
       font-weight: 300;
+      font-size: 28rpx;
       color: #8A8C92;
       text, image {
         vertical-align: middle;
@@ -44,7 +45,7 @@ swiper-item image {
     }
   }
   .footer {
-    font-size: 30rpx;
+    font-size: 28rpx;
     font-weight: 300;
     color: #8A8C92;
     border-top: 1rpx solid #E5E5E5;
@@ -52,17 +53,18 @@ swiper-item image {
     margin: 0 30rpx;
     > text {
       display: block;
-      text {
-        vertical-align: middle;
-      }
+      position: relative;
+      padding-left: 30rpx;
+      margin-bottom: 10rpx;
     }
   }
   .dot {
-    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 14rpx;
     width: 14rpx;
     height: 14rpx;
     border-radius: 100%;
-    margin-right: 18rpx;
     background-color: #FFC121;
   }
 }
@@ -76,7 +78,6 @@ swiper-item image {
 }
 .stores {
   @extend %flex-between;
-  padding-bottom: 30rpx;
   .shopicon {
     @include circle(84rpx);
     margin-right: 20rpx;
@@ -108,6 +109,7 @@ swiper-item image {
 }
 
 .shoplist {
+  margin-top: 30rpx;
   background-color: #fff;
   border-top: 1rpx solid #E5E5E5;
   @extend %flex-between;
@@ -140,7 +142,7 @@ swiper-item image {
     margin-left: 30rpx;
   }
   .content {
-    padding: 0 30rpx;
+    padding: 0 30rpx 30rpx;
   }
   .p {
     display: block;

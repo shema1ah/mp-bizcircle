@@ -19,9 +19,9 @@
     </view>
   </view>
   <view class="footer">
-    <text><text class="dot"/><text>有效日期：{{filter.formatDate(promoInfo.redeem_stime)}} 至 {{filter.formatDate(promoInfo.redeem_etime)}}</text></text>
+    <text><text class="dot"/><text>有效日期：{{filter.formatDate(promoInfo.redeem_stime)}} - {{filter.formatDate(promoInfo.redeem_etime)}}</text></text>
     <text><text class="dot"/>
-      <text wx:if="{{promoInfo.time_limit}}">兑换时间：{{promoInfo.time_limit[0][0]}}-{{promoInfo.time_limit[0][1]}}</text>
+      <text wx:if="{{promoInfo.time_limit}}">兑换时间：{{filter.formatTime(promoInfo.time_limit[0][0])}} - {{filter.formatTime(promoInfo.time_limit[0][1])}}</text>
       <text wx:else>兑换时间：全天可兑换</text>
     </text>
     <text><text class="dot"/>
@@ -42,7 +42,7 @@
     </view>
     <image bindtap="call" data-number="{{mchntInfo.telephone}}" class="mobile" src="./imgs/mobile.png" background-size="cover"/>
   </view>
-  <view class="shoplist" bindtap="goShopList">
+  <view wx:if="{{mchntInfo.shop_num}}" class="shoplist" bindtap="goShopList">
     <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
     <text>{{mchntInfo.shop_num}}家{{mchntInfo.big_shopname}}连锁店</text>
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>

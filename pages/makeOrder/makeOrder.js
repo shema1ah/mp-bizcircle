@@ -99,6 +99,9 @@ Page({
   },
   bindGetUserInfo(e) {
     // 微信授权获取 userInfo
+    wx.showLoading({
+      title: '登录授权中...'
+    })
     let _this = this
     let detail = {}
     detail.encryptedData = e.detail.encryptedData
@@ -107,7 +110,12 @@ Page({
     this.setData({
       nickName: detail.nickName
     })
+    wx.setStorage({
+      key: 'nickName',
+      data: detail.nickName
+    })
     app.login(detail, app.globalData.code, (csid) => {
+      wx.hideLoading()
       _this.setData({
         csid
       })

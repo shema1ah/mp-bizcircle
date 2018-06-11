@@ -23,7 +23,7 @@ swiper-item image {
 
 .intro .body {
   padding: 0 30rpx 18rpx;
-  align-items: center;
+  align-items: baseline;
 }
 
 .intro .body .price {
@@ -36,6 +36,7 @@ swiper-item image {
 
 .intro .body .number {
   font-weight: 300;
+  font-size: 28rpx;
   color: #8A8C92;
 }
 
@@ -56,7 +57,7 @@ swiper-item image {
 }
 
 .intro .footer {
-  font-size: 30rpx;
+  font-size: 28rpx;
   font-weight: 300;
   color: #8A8C92;
   border-top: 1rpx solid #E5E5E5;
@@ -66,18 +67,18 @@ swiper-item image {
 
 .intro .footer > text {
   display: block;
-}
-
-.intro .footer > text text {
-  vertical-align: middle;
+  position: relative;
+  padding-left: 30rpx;
+  margin-bottom: 10rpx;
 }
 
 .intro .dot {
-  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 14rpx;
   width: 14rpx;
   height: 14rpx;
   border-radius: 100%;
-  margin-right: 18rpx;
   background-color: #FFC121;
 }
 
@@ -87,10 +88,6 @@ swiper-item image {
   background-color: #fff;
   padding: 30rpx;
   margin-bottom: 20rpx;
-}
-
-.stores {
-  padding-bottom: 30rpx;
 }
 
 .stores .shopicon {
@@ -129,6 +126,7 @@ swiper-item image {
 }
 
 .shoplist {
+  margin-top: 30rpx;
   background-color: #fff;
   border-top: 1rpx solid #E5E5E5;
   align-items: center;
@@ -166,7 +164,7 @@ swiper-item image {
 }
 
 .detail .content {
-  padding: 0 30rpx;
+  padding: 0 30rpx 30rpx;
 }
 
 .detail .p {
