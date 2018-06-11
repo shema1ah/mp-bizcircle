@@ -26,7 +26,7 @@ Page({
   onTabItemTap(item) {
     if (item.index == 2) {
       wx.navigateToMiniProgram({
-        appId: 'wx46870f4a75c38822',
+        appId: 'wxacf513d714e19d2a',
         path: 'pages/home/dashboard/index'
       })
     }
@@ -56,7 +56,7 @@ Page({
     wx.request({
       url: `${config.host}/mtm/promo/list`,
       data: {
-        userid: 12,
+        qdcode: 'nanjing',
         type: 2,
         stick: 0, // 1 置顶 0 正常
         pagesize: 10,

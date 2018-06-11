@@ -14,7 +14,7 @@ App({
       data: {
         detail,
         code,
-        appid: 'wx11050bbebe8066d6'
+        appid: 'wxacf513d714e19d2a'
       },
       success: function(res) {
         if (res.data.respcd === '0000') {

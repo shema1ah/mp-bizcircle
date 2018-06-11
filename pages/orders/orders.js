@@ -25,6 +25,11 @@ Page({
           })
           _this.fetchData()
         }
+      },
+      fail: function() {
+        _this.setData({
+          csid: 'fetchfail'
+        })
       }
     })
   },

@@ -11,7 +11,8 @@ Page({
     mobile: '',
     isOrdering: false,
     total: 0, // 订单总金额
-    buyNumber: 0 // 可购买数量
+    buyNumber: 0, // 可购买数量
+    userid: ''  // 商品对应的 userid
   },
   add() {
     let count = this.data.count + 1
@@ -61,7 +62,8 @@ Page({
     this.setData({
       promoId: options.promoId,
       goodsInfo: info,
-      total: options.goodsTxamt // 默认1件商品
+      total: options.goodsTxamt, // 默认1件商品
+      userid: options.userid
     })
     wx.getStorage({
       key: 'csid',
@@ -139,7 +141,7 @@ Page({
       data: {
         detail,
         code,
-        appid: 'wx11050bbebe8066d6'
+        appid: 'wxacf513d714e19d2a'
       },
       success: function(res) {
         if (res.data.respcd === '0000') {
@@ -201,8 +203,8 @@ Page({
       url: `${config.host}/mtm/order/create`,
       method: 'POST',
       data: {
-        userid: '12',
-        appid: 'wx11050bbebe8066d6',
+        userid: this.data.userid,
+        appid: 'wxacf513d714e19d2a',
         order_type: 3,
         goods_info: JSON.stringify(goodsInfo),
         busicd: '800213',

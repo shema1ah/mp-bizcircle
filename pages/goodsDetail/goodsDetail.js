@@ -17,7 +17,7 @@ Page({
     let goodsInfo = this.data.goodsInfo
     let promoInfo = this.data.promoInfo
     wx.navigateTo({
-      url: `../makeOrder/makeOrder?buyLimit=${promoInfo.buy_limit}&promoId=${promoInfo.id}&goodsId=${goodsInfo.id}&goodsTotal=${goodsInfo.total}&goodsName=${goodsInfo.name}&goodsTxamt=${goodsInfo.txamt}&goodsImg=${goodsInfo.img}`
+      url: `../makeOrder/makeOrder?userid=${promoInfo.userid}&buyLimit=${promoInfo.buy_limit}&promoId=${promoInfo.id}&goodsId=${goodsInfo.id}&goodsTotal=${goodsInfo.total}&goodsName=${goodsInfo.name}&goodsTxamt=${goodsInfo.txamt}&goodsImg=${goodsInfo.img}`
     })
   },
   call(event) {
