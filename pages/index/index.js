@@ -36,13 +36,13 @@ Page({
     wx.request({
       url: `${config.host}/mtm/promo/list`,
       data: {
-        userid: 12,
+        qdcode: 'nanjing',
         type: 2,
         stick: 1 // 1 置顶 0 正常
       },
       success: function(res) {
         _this.setData({
-          swipers: res.data.data.promos
+          swipers: res.data.data.promos || []
         })
       }
     })
@@ -64,7 +64,7 @@ Page({
       },
       success: function(res) {
         let promos = res.data.data.promos || []
-        let goods = _this.data.goods.concat(promos)
+        let goods = isRefresh ? promos : _this.data.goods.concat(promos)
         _this.setData({
           goods: goods,
           isLoading: false,

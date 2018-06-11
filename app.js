@@ -23,10 +23,6 @@ App({
             key: 'csid',
             data: csid
           })
-          wx.setStorage({
-            key: 'nickName',
-            data: detail.nickName
-          })
           typeof cb === "function" && cb(csid)
         } else {
           wx.showToast({

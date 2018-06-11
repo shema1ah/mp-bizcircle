@@ -34,14 +34,30 @@ Page({
     })
   },
   bindGetUserInfo(e) {
+    wx.showLoading({
+      title: '登录中...'
+    })
     let _this = this
     let detail = {}
     detail.encryptedData = e.detail.encryptedData
     detail.iv = e.detail.iv
+    wx.setStorage({
+      key: 'nickName',
+      data: e.detail.userInfo.nickName
+    })
     app.login(detail, app.globalData.code, (csid) => {
-      _this.setData({
-        csid
-      })
+      wx.hideLoading()
+      if (csid) {
+        _this.setData({
+          csid
+        })
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: '登录失败，请重试',
+          duration: 2000
+        })
+      }
     })
   },
   fetchData(isRefresh) {
