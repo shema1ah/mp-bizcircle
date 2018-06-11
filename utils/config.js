@@ -1,4 +1,4 @@
-var ENV = 'test'
+var ENV = 'dev'
 
 // 生产配置
 var host = '',

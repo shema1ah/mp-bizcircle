@@ -1,4 +1,6 @@
 var config = require('../../utils/config.js')
+var QR = require("../../utils/qrcode.js")
+
 Page({
   data: {
     csid: '',
