@@ -28,7 +28,10 @@ Page({
   onLoad(options) {
     this.fetchData(options.id)
   },
-  fetchData(id = '6410453906085454491') {
+  fetchData(id = '6411856887648428647') {
+    wx.showLoading({
+      title: '加载中...'
+    })
     let _this = this
     wx.request({
       url: `${config.host}/mtm/promo/info`,
@@ -39,6 +42,7 @@ Page({
         'QF_CSID': this.data.csid
       },
       success: function(res) {
+        wx.hideLoading()
         let promo = res.data.data.promo
         _this.setData({
           swipers: promo.goods_info.imgs,

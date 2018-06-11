@@ -11,7 +11,17 @@ var formatCurrency = function (number) {
 var formatDate = function (string) {
   if (!string) return
   var reg = getRegExp('\s')
+  var lineReg = getRegExp('-', 'g')
   string = string.split(reg)[0]
+  string = string.replace(lineReg, '.')
+  return string
+}
+
+var formatTime = function (string) {
+  if (!string) return
+  var hour = parseInt(string.substring(0, 2))
+  var suffix = hour < 12 ? 'am' : 'pm'
+  string = string.substring(0, 5) + suffix
   return string
 }
 
@@ -32,5 +42,6 @@ var formatStatus = function (number) {
 module.exports = {
   formatCurrency: formatCurrency,
   formatDate: formatDate,
+  formatTime: formatTime,
   formatStatus: formatStatus
 }
