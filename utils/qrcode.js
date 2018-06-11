@@ -292,7 +292,7 @@
   // Badness coefficients.
   var N1 = 3, N2 = 3, N3 = 40, N4 = 10;
 
-  // Using the table of the length of each run, calculate the amount of bad image 
+  // Using the table of the length of each run, calculate the amount of bad image
   // - long runs or those that look like finders; called twice, once each for X and Y
   function badruns(length) {
     var i;
@@ -749,7 +749,7 @@
     },
     /**
      * 新增$this参数，传入组件的this,兼容在组件中生成
-     */ 
+     */
     draw: function (str, canvas, cavW, cavH, $this, ecc) {
       var that = this;
       ecclevel = ecc || ecclevel;
@@ -763,10 +763,10 @@
       str = that.utf16to8(str);//增加中文显示
 
       var frame = that.getFrame(str),
-        // 组件中生成qrcode需要绑定this 
+        // 组件中生成qrcode需要绑定this
         ctx = wx.createCanvasContext(canvas,$this),
-        px = Math.round(size / (width + 8));
-      var roundedSize = px * (width + 8),
+        px = Math.round(size / (width));
+      var roundedSize = px * (width),
         offset = Math.floor((size - roundedSize) / 2);
       size = roundedSize;
       //ctx.clearRect(0, 0, cavW, cavW);
@@ -776,7 +776,7 @@
       for (var i = 0; i < width; i++) {
         for (var j = 0; j < width; j++) {
           if (frame[j * width + i]) {
-            ctx.fillRect(px * (4 + i) + offset, px * (4 + j) + offset, px, px);
+            ctx.fillRect(px * (i) + offset, px * (j) + offset, px, px);
           }
         }
       }

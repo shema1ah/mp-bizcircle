@@ -48,6 +48,7 @@ Page({
           status: result.promo_state,
           redeemCode: result.redeem_code
         })
+        QR.api.draw(result.redeem_code, 'mycanvas', 130, 130)
         _this.setData({
           goodsInfo: result.goods_info[0],
           mchntInfo: result.mchnt_info,
