@@ -14,7 +14,7 @@
   <text>暂无相关特卖</text>
 </view>
 
-<swiper current="{{current}}" circular bindchange="slideSwiper" duration="600" style="height: 628rpx;" previous-margin="40rpx" next-margin="40rpx">
+<swiper current="{{current}}" circular bindchange="slideSwiper" autoplay style="height:628rpx;" previous-margin="40rpx" next-margin="40rpx">
   <block wx:for="{{swipers}}" wx:key="{{item.id}}">
     <swiper-item id="{{item.id}}" bindtap="goodsDetail">
       <image class="swiper-image" src="{{item.img}}" />

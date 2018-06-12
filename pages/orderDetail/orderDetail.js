@@ -40,7 +40,7 @@ Page({
         order_id: orderId || '6410381465489314066'
       },
       header: {
-        'QF_CSID': _this.data.csid
+        'QF-CSID': _this.data.csid
       },
       success: function(res) {
         let result = res.data.data

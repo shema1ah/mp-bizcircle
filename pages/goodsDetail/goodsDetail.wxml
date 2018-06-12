@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"/>
 
-<swiper circular autoplay indicator-dots duration="600" style="height:564rpx;">
+<swiper circular autoplay interval="3000" indicator-dots style="height:564rpx;">
   <block wx:for="{{swipers}}" wx:key="{{item.index}}">
     <swiper-item>
       <image src="{{item}}" background-size="cover"/>
@@ -53,9 +53,11 @@
   <text class="title">商品详情</text>
   <view class="content">
     <text class="p">{{goodsInfo.info}}</text>
-    <image wx:for="{{goodsInfo.info_imgs}}" wx:key="{{item.index}}" src="{{item}}" background-size="cover"/>
+    <image wx:for="{{goodsInfo.info_imgs}}" wx:key="{{index}}" src="{{item}}" data-index="{{index}}" mode="widthFix" bindload="imageLoad"
+    style="width:{{imageSizes[index].width}}rpx; height:{{imageSizes[index].height}}rpx;"/>
   </view>
 </view>
 
 <view style="padding-bottom: 96rpx;"></view>
-<button class="buyBtn" bindtap="goMakeOrder">￥{{filter.formatCurrency(goodsInfo.txamt)}}直接购买</button>
+<button wx:if="{{promoInfo.status == 2}}" class="buyBtn" bindtap="goMakeOrder">￥{{filter.formatCurrency(goodsInfo.txamt)}}直接购买</button>
+<button wx:else class="disable-button" bindtap="buyBtn">已下架</button>

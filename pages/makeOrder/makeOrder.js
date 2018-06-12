@@ -129,7 +129,7 @@ Page({
         promo_id: this.data.promoId
       },
       header: {
-        'QF_CSID': csid
+        'QF-CSID': csid
       },
       success: function(res) {
         if (res.data.respcd === '0000') {
@@ -222,7 +222,7 @@ Page({
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'QF_CSID': _this.data.csid
+        'QF-CSID': _this.data.csid
       },
       success: function(res) {
         let data = res.data.data
@@ -280,7 +280,7 @@ Page({
         order_id: orderId
       },
       header: {
-        'QF_CSID': _this.data.csid
+        'QF-CSID': _this.data.csid
       },
       success: function(res) {
         let data = res.data

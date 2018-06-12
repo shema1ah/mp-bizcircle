@@ -69,16 +69,16 @@ Page({
     wx.request({
       url: `${config.host}/mtm/order/list`,
       data: {
-        type: 3,
+        type: 4,
         page,
         pagesize: 10
       },
       header: {
-        'QF_CSID': this.data.csid
+        'QF-CSID': this.data.csid
       },
       success: function(res) {
         let result = res.data.data.orders || []
-        let orders = _this.data.orders.concat(result)
+        let orders = isRefresh ? result : _this.data.orders.concat(result)
         _this.setData({
           orders,
           page: _this.data.page + 1,
