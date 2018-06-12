@@ -14,7 +14,7 @@ Page({
       url: `../orderDetail/orderDetail?orderId=${event.currentTarget.id}`
     })
   },
-  onLoad() {
+  onShow() {
     let _this = this
     wx.getStorage({
       key: 'csid',
@@ -23,12 +23,12 @@ Page({
           _this.setData({
             csid: res.data
           })
-          _this.fetchData()
+          _this.fetchData(false, res.data)
         }
       },
       fail: function() {
         _this.setData({
-          csid: 'fetchfail'
+          csid: ''
         })
       }
     })
@@ -51,6 +51,7 @@ Page({
         _this.setData({
           csid
         })
+        _this.fetchData(true, csid)
       } else {
         wx.showToast({
           icon: 'none',
@@ -60,7 +61,7 @@ Page({
       }
     })
   },
-  fetchData(isRefresh) {
+  fetchData(isRefresh, csid) {
     this.setData({
       isLoading: true
     })
@@ -74,22 +75,28 @@ Page({
         pagesize: 10
       },
       header: {
-        'QF-CSID': this.data.csid
+        'QF-CSID': csid
       },
       success: function(res) {
-        let result = res.data.data.orders || []
-        let orders = isRefresh ? result : _this.data.orders.concat(result)
-        _this.setData({
-          orders,
-          page: _this.data.page + 1,
-          isLoading: false
-        })
-        if (isRefresh) {
-          wx.stopPullDownRefresh()
-        }
-        if (result.length < 10) {
+        if (res.data.respcd === '0000') {
+          let result = res.data.data.orders || []
+          let orders = isRefresh ? result : _this.data.orders.concat(result)
           _this.setData({
-            isOver: true
+            orders,
+            page: _this.data.page + 1,
+            isLoading: false
+          })
+          if (isRefresh) {
+            wx.stopPullDownRefresh()
+          }
+          if (result.length < 10) {
+            _this.setData({
+              isOver: true
+            })
+          }
+        } else if (res.data.respcd === '2002') {
+          _this.setData({
+            csid: ''
           })
         }
       }
