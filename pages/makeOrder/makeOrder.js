@@ -119,6 +119,7 @@ Page({
       _this.setData({
         csid
       })
+      _this.fetchCustomerInfo(csid)
     })
   },
   fetchCustomerInfo (csid) {
@@ -137,6 +138,10 @@ Page({
           _this.setData({
             buyNumber: customerInfo.customer_buy_num,
             mobile: customerInfo.mobile
+          })
+        } else if (res.data.respcd === '2002') {
+          _this.setData({
+            csid: ''
           })
         }
       }
@@ -198,6 +203,9 @@ Page({
         return false
       }
     }
+    wx.showLoading({
+      title: '加载中...'
+    })
     let goodsInfo = [{
       id: this.data.goodsInfo.id,
       count: this.data.count
@@ -213,7 +221,7 @@ Page({
       data: {
         userid: this.data.userid,
         appid: 'wxacf513d714e19d2a',
-        order_type: 3,
+        order_type: 4,
         goods_info: JSON.stringify(goodsInfo),
         busicd: '800213',
         promo_id: this.data.promoId,
@@ -225,6 +233,7 @@ Page({
         'QF-CSID': _this.data.csid
       },
       success: function(res) {
+        wx.hideLoading()
         let data = res.data.data
         if (res.data.respcd === '0000') {
           _this.wechatPay(data.pay_params, data.out_trade_no)
