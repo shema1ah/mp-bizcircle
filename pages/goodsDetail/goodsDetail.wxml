@@ -59,5 +59,6 @@
 </view>
 
 <view style="padding-bottom: 96rpx;"></view>
-<button wx:if="{{promoInfo.status == 2}}" class="buyBtn" bindtap="goMakeOrder">￥{{filter.formatCurrency(goodsInfo.txamt)}}直接购买</button>
+<button wx:if="{{goodsInfo.bought === goodsInfo.total}}" class="disable-button" bindtap="buyBtn">售罄</button>
+<button wx:elif="{{promoInfo.status == 2}}" class="buyBtn" bindtap="goMakeOrder">￥{{filter.formatCurrency(goodsInfo.txamt)}}直接购买</button>
 <button wx:else class="disable-button" bindtap="buyBtn">已下架</button>

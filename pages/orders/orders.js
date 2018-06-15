@@ -23,7 +23,7 @@ Page({
           _this.setData({
             csid: res.data
           })
-          _this.fetchData(false, res.data)
+          _this.fetchData(true, res.data)
         }
       },
       fail: function() {
@@ -62,9 +62,11 @@ Page({
     })
   },
   fetchData(isRefresh, csid) {
-    this.setData({
-      isLoading: true
-    })
+    if (!isRefresh) {
+      this.setData({
+        isLoading: true
+      })
+    }
     let page = isRefresh ? 0 : this.data.page // 上拉刷新，只拿第一页数据
     let _this = this
     wx.request({
@@ -81,9 +83,10 @@ Page({
         if (res.data.respcd === '0000') {
           let result = res.data.data.orders || []
           let orders = isRefresh ? result : _this.data.orders.concat(result)
+          let page = parseInt(_this.data.page) + 1
           _this.setData({
             orders,
-            page: _this.data.page + 1,
+            page,
             isLoading: false
           })
           if (isRefresh) {
@@ -103,11 +106,11 @@ Page({
     })
   },
   onPullDownRefresh() {
-    this.fetchData('1')
+    this.fetchData(true, this.data.csid)
   },
   onReachBottom() {
     if (!this.data.isOver) {
-      this.fetchData()
+      this.fetchData(false, this.data.csid)
     }
   }
 })

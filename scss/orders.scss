@@ -26,7 +26,7 @@
     image {
       width: 216rpx;
       height: 144rpx;
-      margin-right: 24rpx;
+      margin-right: 14rpx;
     }
   }
 }
@@ -36,28 +36,31 @@
   height: 144rpx;
   flex-direction: column;
   @extend %flex-between;
+  position: relative;
   .name {
+    display: block;
+    height: 88rpx;
+    overflow: hidden;
     font-size: 32rpx;
     font-weight: bold;
+    margin-right: 100rpx;
   }
-  .title {
-    @extend %flex-between;
-    .status {
-      line-height: 92rpx;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      @include circle(100rpx);
-      border: 4rpx solid #B2B2B2;
-      text-align: center;
-      transform: rotate(30deg);
-      margin-right: -10rpx;
-      margin-top: -60rpx;
-      text {
-        display: inline-block;
-        @include circle(88rpx);
-        border: 2rpx solid #B2B2B2;
-      }
+  .status {
+    position: absolute;
+    right: -10rpx;
+    top: -60rpx;
+    line-height: 92rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include circle(100rpx);
+    border: 4rpx solid #B2B2B2;
+    text-align: center;
+    transform: rotate(30deg);
+    text {
+      display: inline-block;
+      @include circle(88rpx);
+      border: 2rpx solid #B2B2B2;
     }
   }
   .footer {

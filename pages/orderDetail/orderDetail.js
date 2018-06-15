@@ -6,7 +6,8 @@ Page({
     csid: '',
     goodsInfo: {},
     mchntInfo: {},
-    promoInfo: {}
+    promoInfo: {},
+    showSuccessIcon: false
   },
   goShopList() {
     wx.navigateTo({
@@ -19,6 +20,11 @@ Page({
     })
   },
   onLoad(options) {
+    if (options.from === 'makeOrder') {
+      this.setData({
+        showSuccessIcon: true
+      })
+    }
     let _this = this
     wx.getStorage({
       key: 'csid',
@@ -33,22 +39,27 @@ Page({
     })
   },
   fetchData(orderId) {
+    wx.showLoading({
+      title: '加载中...'
+    })
     let _this = this
     wx.request({
       url: `${config.host}/mtm/order/info`,
       data: {
-        order_id: orderId || '6410381465489314066'
+        order_id: orderId || '6412253397213061816'
       },
       header: {
         'QF-CSID': _this.data.csid
       },
       success: function(res) {
+        wx.hideLoading()
         let result = res.data.data
         let promo = Object.assign(result.promo, {
           status: result.promo_state,
           redeemCode: result.redeem_code
         })
-        QR.api.draw(result.redeem_code, 'mycanvas', 130, 130)
+        let color = result.promo_state === 0 ? '#000000' : '#8A8C92'
+        QR.api.draw(color, result.redeem_code, 'mycanvas', 130, 130)
         _this.setData({
           goodsInfo: result.goods_info[0],
           mchntInfo: result.mchnt_info,

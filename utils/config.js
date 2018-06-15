@@ -1,8 +1,8 @@
-var ENV = 'test'
+var ENV = ''
 
 // 生产配置
-var host = '',
-    ohost = ''
+var host = 'https://o.qfpay.com'
+var ohost = 'https://o.qfpay.com'
 
 // 测试配置
 if (ENV === 'test') {
@@ -11,7 +11,7 @@ if (ENV === 'test') {
 }
 // 本地配置
 if (ENV === 'dev') {
-  host = 'http://172.100.111.45:2004',
+  host = 'http://172.100.111.45:2004'
   ohost = 'http://172.100.111.45:6200'
 }
 

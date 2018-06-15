@@ -226,7 +226,8 @@ Page({
         busicd: '800213',
         promo_id: this.data.promoId,
         mode: 'quick_order',
-        addr_info: JSON.stringify(userInfo)
+        addr_info: JSON.stringify(userInfo),
+        qdcode: 'nanjing'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -259,22 +260,19 @@ Page({
       signType: 'MD5',
       paySign: params.paySign,
       success: function(res){
-        wx.showToast({
-          title: 'wechatPay success',
-          icon: 'none',
-          duration: 2000
-        })
         _this.setData({
           isOrdering: false
         })
         _this.orderQuery(orderId)
       },
-      fail: function(res){
-        wx.showToast({
-          title: 'wechatPay fail',
-          icon: 'none',
-          duration: 2000
-        })
+      fail: function(res) {
+        if (res.errMsg.indexOf('cancel') < 0) {
+          wx.showToast({
+            title: res.errMsg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
         _this.setData({
           isOrdering: false
         })
@@ -292,19 +290,10 @@ Page({
         'QF-CSID': _this.data.csid
       },
       success: function(res) {
-        let data = res.data
-        if (data.respcd === '0000' && data.data.state === 2) {
-          // 订单 支付成功
-          wx.navigateTo({
-            url: `../orderDetail/orderDetail?orderId=${orderId}`
-          })
-        } else {
-          wx.showToast({
-            icon: 'none',
-            title: data.resperr,
-            duration: 2000
-          })
-        }
+        // 订单 支付成功
+        wx.navigateTo({
+          url: `../orderDetail/orderDetail?orderId=${orderId}&from=makeOrder`
+        })
       }
     })
   }

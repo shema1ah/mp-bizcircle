@@ -13,6 +13,7 @@ page {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   .payDone {
     position: absolute;
+    display: none;
     width: 76rpx;
     height: 76rpx;
     top: 38rpx;
@@ -47,7 +48,6 @@ page {
   }
   .body {
     position: relative;
-    color: #8A8C92;
     text-align: center;
     padding: 60rpx 0 55rpx;
     border-bottom: 4rpx dashed #F31534;
@@ -77,12 +77,12 @@ page {
     .code {
       display: block;
       font-size: 40rpx;
-      font-weight: bold;
       margin-top: 12rpx;
       margin-bottom: 20rpx;
     }
     view {
-      line-height: 1.6;
+      color: #8A8C92;
+      line-height: 1.8;
       display: inline-block;
       text-align: left;
       text {
@@ -130,6 +130,12 @@ page {
         font-weight: bold;
         color: #2F323A;
       }
+      .mark {
+        width: 18rpx;
+        height: 22rpx;
+        vertical-align: baseline;
+        margin-right: 8rpx;
+      }
     }
     .mobile {
       width: 30rpx;
@@ -162,17 +168,9 @@ page {
 }
 
 .done, .expire {
-  .payDone {
-    display: none;
-  }
   color: #8A8C92;
   .price {
     color: #8A8C92;
-  }
-  .body {
-    image {
-      opacity: 0.5;
-    }
   }
 }
 
@@ -180,5 +178,14 @@ page {
   color: #fff;
   font-size: 26rpx;
   margin-top: 24rpx;
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text {
+    vertical-align: middle;
+  }
+  .star {
+    font-size: 48rpx;
+    margin-right: 10rpx;
+  }
 }
