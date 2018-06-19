@@ -28,4 +28,4 @@
 
 <view style="padding-bottom: 96rpx;"></view>
 <button wx:if="{{!csid}}" class="wechat-button fixed-bottom-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
-<button wx:else bindtap="makeOrder" class="primary-button fixed-bottom-button">￥{{filter.formatCurrency(total)}} 立即购买</button>
+<button wx:else bindtap="makeOrder" class="primary-button fixed-bottom-button">￥{{filter.formatCurrency(total)}} 去支付</button>

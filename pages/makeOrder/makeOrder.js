@@ -204,7 +204,7 @@ Page({
       }
     }
     wx.showLoading({
-      title: '加载中...'
+      title: '支付中...'
     })
     let goodsInfo = [{
       id: this.data.goodsInfo.id,

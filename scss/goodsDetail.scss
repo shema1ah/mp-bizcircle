@@ -101,10 +101,11 @@ swiper-item image {
     }
   }
   .mobile {
-    width: 30rpx;
+    width: 28rpx;
     height: 40rpx;
     align-self: center;
     margin-left: 60rpx;
+    margin-right: 16rpx;
   }
 }
 
@@ -128,6 +129,8 @@ swiper-item image {
   .arrow {
     width: 16rpx;
     height: 24rpx;
+    margin-left: 60rpx;
+    margin-right: 16rpx;
   }
 }
 

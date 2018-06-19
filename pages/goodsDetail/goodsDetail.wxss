@@ -119,10 +119,11 @@ swiper-item image {
 }
 
 .stores .mobile {
-  width: 30rpx;
+  width: 28rpx;
   height: 40rpx;
   align-self: center;
   margin-left: 60rpx;
+  margin-right: 16rpx;
 }
 
 .shoplist {
@@ -148,6 +149,8 @@ swiper-item image {
 .shoplist .arrow {
   width: 16rpx;
   height: 24rpx;
+  margin-left: 60rpx;
+  margin-right: 16rpx;
 }
 
 .detail {

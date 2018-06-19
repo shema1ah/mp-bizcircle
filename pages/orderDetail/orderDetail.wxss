@@ -168,7 +168,7 @@ page {
 }
 
 .orderDetail .footer .mobile {
-  width: 30rpx;
+  width: 28rpx;
   height: 40rpx;
   align-self: center;
   margin-left: 60rpx;
