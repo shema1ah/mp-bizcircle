@@ -27,8 +27,11 @@ Page({
     })
   },
   onLoad(options) {
+    let scene = decodeURIComponent(options.scene)
     if (options.id) {
       this.fetchData(options.id)
+    } else if (scene) {
+      this.fetchData(scene)
     }
   },
   onShareAppMessage(res) {
