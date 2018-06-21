@@ -23,6 +23,12 @@ Page({
     this.fetchTop3()
     this.fetchData()
   },
+  onShareAppMessage(res) {
+    return {
+      title: '周边优惠精品特卖享不停',
+      path: '/pages/index/index'
+    }
+  },
   onTabItemTap(item) {
     if (item.index == 2) {
       wx.navigateToMiniProgram({

@@ -29,9 +29,13 @@ Page({
   onLoad(options) {
     if (options.id) {
       this.fetchData(options.id)
-    } else {
-      var scene = decodeURIComponent(options.scene)
-      this.fetchData(scene)
+    }
+  },
+  onShareAppMessage(res) {
+    return {
+      title: this.data.goodsInfo.name,
+      path: `/pages/goodsDetail/goodsDetail?id=${this.data.promoInfo.id}`,
+      imageUrl: this.data.goodsInfo.img
     }
   },
   imageLoad (e) {
