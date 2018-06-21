@@ -34,6 +34,9 @@ Page({
     })
   },
   bindGetUserInfo(e) {
+    if (e.detail.errMsg.indexOf('fail') > 0) {
+      return
+    }
     wx.showLoading({
       title: '登录中...'
     })
