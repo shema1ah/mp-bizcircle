@@ -119,6 +119,7 @@ Page({
       _this.setData({
         csid
       })
+      _this.fetchCustomerInfo(csid)
     })
   },
   fetchCustomerInfo (csid) {
@@ -129,7 +130,7 @@ Page({
         promo_id: this.data.promoId
       },
       header: {
-        'QF_CSID': csid
+        'QF-CSID': csid
       },
       success: function(res) {
         if (res.data.respcd === '0000') {
@@ -137,6 +138,10 @@ Page({
           _this.setData({
             buyNumber: customerInfo.customer_buy_num,
             mobile: customerInfo.mobile
+          })
+        } else if (res.data.respcd === '2002') {
+          _this.setData({
+            csid: ''
           })
         }
       }
@@ -198,6 +203,9 @@ Page({
         return false
       }
     }
+    wx.showLoading({
+      title: '支付中...'
+    })
     let goodsInfo = [{
       id: this.data.goodsInfo.id,
       count: this.data.count
@@ -213,18 +221,20 @@ Page({
       data: {
         userid: this.data.userid,
         appid: 'wxacf513d714e19d2a',
-        order_type: 3,
+        order_type: 4,
         goods_info: JSON.stringify(goodsInfo),
         busicd: '800213',
         promo_id: this.data.promoId,
         mode: 'quick_order',
-        addr_info: JSON.stringify(userInfo)
+        addr_info: JSON.stringify(userInfo),
+        qdcode: 'nanjing'
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'QF_CSID': _this.data.csid
+        'QF-CSID': _this.data.csid
       },
       success: function(res) {
+        wx.hideLoading()
         let data = res.data.data
         if (res.data.respcd === '0000') {
           _this.wechatPay(data.pay_params, data.out_trade_no)
@@ -250,22 +260,19 @@ Page({
       signType: 'MD5',
       paySign: params.paySign,
       success: function(res){
-        wx.showToast({
-          title: 'wechatPay success',
-          icon: 'none',
-          duration: 2000
-        })
         _this.setData({
           isOrdering: false
         })
         _this.orderQuery(orderId)
       },
-      fail: function(res){
-        wx.showToast({
-          title: 'wechatPay fail',
-          icon: 'none',
-          duration: 2000
-        })
+      fail: function(res) {
+        if (res.errMsg.indexOf('cancel') < 0) {
+          wx.showToast({
+            title: res.errMsg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
         _this.setData({
           isOrdering: false
         })
@@ -280,22 +287,13 @@ Page({
         order_id: orderId
       },
       header: {
-        'QF_CSID': _this.data.csid
+        'QF-CSID': _this.data.csid
       },
       success: function(res) {
-        let data = res.data
-        if (data.respcd === '0000' && data.data.state === 2) {
-          // 订单 支付成功
-          wx.navigateTo({
-            url: `../orderDetail/orderDetail?orderId=${orderId}`
-          })
-        } else {
-          wx.showToast({
-            icon: 'none',
-            title: data.resperr,
-            duration: 2000
-          })
-        }
+        // 订单 支付成功
+        wx.navigateTo({
+          url: `../orderDetail/orderDetail?orderId=${orderId}&from=makeOrder`
+        })
       }
     })
   }

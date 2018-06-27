@@ -18,7 +18,7 @@
   </view>
   <view class="item">
     <label for="name">姓名</label>
-    <input id="name" value="{{nickName}}" disabled bindinput="bindNickNameInput" placeholder="输入姓名" type="text" />
+    <input id="name" value="{{nickName}}" bindinput="bindNickNameInput" placeholder="输入姓名" type="text" />
   </view>
   <view class="item">
     <label for="mobile">联系电话</label>
@@ -27,5 +27,5 @@
 </view>
 
 <view style="padding-bottom: 96rpx;"></view>
-<button wx:if="{{!csid}}" class="wechat-button fixed-bottom-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">获取用户信息</button>
-<button wx:else bindtap="makeOrder" class="primary-button fixed-bottom-button">￥{{filter.formatCurrency(total)}} 立即购买</button>
+<button wx:if="{{!csid}}" class="wechat-button fixed-bottom-button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
+<button wx:else bindtap="makeOrder" class="primary-button fixed-bottom-button">￥{{filter.formatCurrency(total)}} 去支付</button>

@@ -6,7 +6,8 @@ Page({
     swipers: [],
     goodsInfo: {},
     mchntInfo: {},
-    promoInfo: {}
+    promoInfo: {},
+    imageSizes: []  // 保存图片尺寸
   },
   goShopList() {
     wx.navigateTo({
@@ -26,7 +27,31 @@ Page({
     })
   },
   onLoad(options) {
-    this.fetchData(options.id)
+    if (options.id) {
+      this.fetchData(options.id)
+    }
+  },
+  onShareAppMessage(res) {
+    return {
+      title: this.data.goodsInfo.name,
+      path: `/pages/goodsDetail/goodsDetail?id=${this.data.promoInfo.id}`,
+      imageUrl: this.data.goodsInfo.img
+    }
+  },
+  imageLoad (e) {
+    var $width = e.detail.width,    //获取图片真实宽度
+        $height = e.detail.height,
+        ratio = $width / $height;   //图片的真实宽高比例
+    var viewWidth = 690,           //设置图片显示宽度，
+        viewHeight = 690 / ratio;    //计算高度值
+    var images = this.data.imageSizes;
+    images[e.target.dataset.index] = {
+      width: viewWidth,
+      height: viewHeight
+    }
+    this.setData({
+      imageSizes: images
+    })
   },
   fetchData(id = '6411856887648428647') {
     wx.showLoading({
@@ -39,7 +64,7 @@ Page({
         id
       },
       header: {
-        'QF_CSID': this.data.csid
+        'QF-CSID': this.data.csid
       },
       success: function(res) {
         wx.hideLoading()

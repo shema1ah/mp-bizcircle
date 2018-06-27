@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"/>
 <view class="orderDetail {{filter.formatStatus(promoInfo.status)}}">
-  <image class="payDone" src="./imgs/checked.png" background-size="cover"/>
+  <image wx:if="{{showSuccessIcon}}" class="payDone" src="./imgs/checked.png" background-size="cover"/>
   <view class="header">
     <image src="{{goodsInfo.img}}" background-size="cover"/>
     <view class="content">
@@ -18,23 +18,23 @@
     <canvas style="width:130px;height:130px;margin:0 auto;" canvas-id="mycanvas"/>
     <text class="code">{{promoInfo.redeemCode}}</text>
     <view>
-      <text><text class="dot"></text>有效时间 {{filter.formatDate(promoInfo.redeem_stime)}} 至 {{filter.formatDate(promoInfo.redeem_etime)}}</text>
-      <text wx:if="{{promoInfo.time_limit}}"><text class="dot"></text>兑换时间 {{promoInfo.time_limit[0][0]}}-{{promoInfo.time_limit[0][1]}}</text>
+      <text><text class="dot"></text>有效时间 {{filter.formatDate(promoInfo.redeem_stime)}} - {{filter.formatDate(promoInfo.redeem_etime)}}</text>
+      <text wx:if="{{promoInfo.time_limit}}"><text class="dot"></text>兑换时间 {{filter.formatTime(promoInfo.time_limit[0][0])}} - {{filter.formatTime(promoInfo.time_limit[0][1])}}</text>
     </view>
   </view>
   <view class="footer">
     <image class="shopicon" src="{{mchntInfo.logo_url || '../../imgs/shopLogo.png'}}" background-size="cover"/>
     <view>
       <text class="shopname">{{mchntInfo.shopname}}</text>
-      <text>{{mchntInfo.address}}</text>
+      <image class="mark" src="./imgs/mark.png" background-size="cover"/><text>{{mchntInfo.address}}</text>
     </view>
     <image class="mobile" data-number="{{mchntInfo.telephone}}" bindtap="call" src="./imgs/mobile.png" background-size="cover"/>
     <view class="semicircle"></view><view class="semicircle right"></view>
   </view>
-  <view class="shoplist" bindtap="goShopList">
+  <view wx:if="{{mchntInfo.shop_num}}" class="shoplist" bindtap="goShopList">
     <image class="shopicon" src="./imgs/shop-icon.png" background-size="cover"/>
     <text>{{mchntInfo.shop_num}}家{{mchntInfo.big_shopname}}连锁店</text>
     <image class="arrow" src="./imgs/arrow.png" background-size="cover"/>
   </view>
 </view>
-<text wx:if="{{promoInfo.exchange_info}}" class="tip">* 注意事项：{{promoInfo.exchange_info}}</text>
+<view wx:if="{{promoInfo.exchange_info}}" class="tip"><text class="star">*</text><text>注意事项：{{promoInfo.exchange_info}}</text></view>

@@ -23,10 +23,16 @@ Page({
     this.fetchTop3()
     this.fetchData()
   },
+  onShareAppMessage(res) {
+    return {
+      title: '周边优惠精品特卖享不停',
+      path: '/pages/index/index'
+    }
+  },
   onTabItemTap(item) {
     if (item.index == 2) {
       wx.navigateToMiniProgram({
-        appId: 'wxacf513d714e19d2a',
+        appId: 'wx46870f4a75c38822', // 好近优品小程序的 appid
         path: 'pages/home/dashboard/index'
       })
     }
@@ -37,6 +43,7 @@ Page({
       url: `${config.host}/mtm/promo/list`,
       data: {
         qdcode: 'nanjing',
+        pagesize: 3,
         type: 2,
         stick: 1 // 1 置顶 0 正常
       },
@@ -65,10 +72,11 @@ Page({
       success: function(res) {
         let promos = res.data.data.promos || []
         let goods = isRefresh ? promos : _this.data.goods.concat(promos)
+        let page = parseInt(_this.data.page) + 1
         _this.setData({
           goods: goods,
           isLoading: false,
-          page: _this.data.page + 1
+          page
         })
         if (isRefresh) {
           wx.stopPullDownRefresh()
@@ -87,6 +95,10 @@ Page({
     }
   },
   onPullDownRefresh() {
+    this.setData({
+      current: 0
+    })
     this.fetchData('1')
+    this.fetchTop3()
   }
 })

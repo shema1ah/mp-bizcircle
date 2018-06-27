@@ -18,6 +18,7 @@ page {
 
 .orderDetail .payDone {
   position: absolute;
+  display: none;
   width: 76rpx;
   height: 76rpx;
   top: 38rpx;
@@ -56,7 +57,6 @@ page {
 
 .orderDetail .body {
   position: relative;
-  color: #8A8C92;
   text-align: center;
   padding: 60rpx 0 55rpx;
   border-bottom: 4rpx dashed #F31534;
@@ -95,13 +95,13 @@ page {
 .orderDetail .body .code {
   display: block;
   font-size: 40rpx;
-  font-weight: bold;
   margin-top: 12rpx;
   margin-bottom: 20rpx;
 }
 
 .orderDetail .body view {
-  line-height: 1.6;
+  color: #8A8C92;
+  line-height: 1.8;
   display: inline-block;
   text-align: left;
 }
@@ -160,8 +160,15 @@ page {
   color: #2F323A;
 }
 
+.orderDetail .footer view .mark {
+  width: 18rpx;
+  height: 22rpx;
+  vertical-align: baseline;
+  margin-right: 8rpx;
+}
+
 .orderDetail .footer .mobile {
-  width: 30rpx;
+  width: 28rpx;
   height: 40rpx;
   align-self: center;
   margin-left: 60rpx;
@@ -194,21 +201,24 @@ page {
   color: #8A8C92;
 }
 
-.done .payDone, .expire .payDone {
-  display: none;
-}
-
 .done .price, .expire .price {
   color: #8A8C92;
-}
-
-.done .body image, .expire .body image {
-  opacity: 0.5;
 }
 
 .tip {
   color: #fff;
   font-size: 26rpx;
   margin-top: 24rpx;
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.tip text {
+  vertical-align: middle;
+}
+
+.tip .star {
+  font-size: 48rpx;
+  margin-right: 10rpx;
 }

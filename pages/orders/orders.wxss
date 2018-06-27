@@ -1,4 +1,4 @@
-.order .header, .order .body, .content, .content .title, .content .footer {
+.order .header, .order .body, .content, .content .footer {
   display: flex;
   justify-content: space-between;
 }
@@ -52,21 +52,29 @@
 .order .body image {
   width: 216rpx;
   height: 144rpx;
-  margin-right: 24rpx;
+  margin-right: 14rpx;
 }
 
 .content {
   flex: 1;
   height: 144rpx;
   flex-direction: column;
+  position: relative;
 }
 
 .content .name {
+  display: block;
+  height: 88rpx;
+  overflow: hidden;
   font-size: 32rpx;
   font-weight: bold;
+  margin-right: 100rpx;
 }
 
-.content .title .status {
+.content .status {
+  position: absolute;
+  right: -10rpx;
+  top: -60rpx;
   line-height: 92rpx;
   display: flex;
   align-items: center;
@@ -77,11 +85,9 @@
   border: 4rpx solid #B2B2B2;
   text-align: center;
   transform: rotate(30deg);
-  margin-right: -10rpx;
-  margin-top: -60rpx;
 }
 
-.content .title .status text {
+.content .status text {
   display: inline-block;
   width: 88rpx;
   height: 88rpx;

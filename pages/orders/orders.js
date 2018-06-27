@@ -14,7 +14,7 @@ Page({
       url: `../orderDetail/orderDetail?orderId=${event.currentTarget.id}`
     })
   },
-  onLoad() {
+  onShow() {
     let _this = this
     wx.getStorage({
       key: 'csid',
@@ -23,12 +23,12 @@ Page({
           _this.setData({
             csid: res.data
           })
-          _this.fetchData()
+          _this.fetchData(true, res.data)
         }
       },
       fail: function() {
         _this.setData({
-          csid: 'fetchfail'
+          csid: ''
         })
       }
     })
@@ -51,6 +51,7 @@ Page({
         _this.setData({
           csid
         })
+        _this.fetchData(true, csid)
       } else {
         wx.showToast({
           icon: 'none',
@@ -60,47 +61,56 @@ Page({
       }
     })
   },
-  fetchData(isRefresh) {
-    this.setData({
-      isLoading: true
-    })
+  fetchData(isRefresh, csid) {
+    if (!isRefresh) {
+      this.setData({
+        isLoading: true
+      })
+    }
     let page = isRefresh ? 0 : this.data.page // 上拉刷新，只拿第一页数据
     let _this = this
     wx.request({
       url: `${config.host}/mtm/order/list`,
       data: {
-        type: 3,
+        type: 4,
         page,
         pagesize: 10
       },
       header: {
-        'QF_CSID': this.data.csid
+        'QF-CSID': csid
       },
       success: function(res) {
-        let result = res.data.data.orders || []
-        let orders = _this.data.orders.concat(result)
-        _this.setData({
-          orders,
-          page: _this.data.page + 1,
-          isLoading: false
-        })
-        if (isRefresh) {
-          wx.stopPullDownRefresh()
-        }
-        if (result.length < 10) {
+        if (res.data.respcd === '0000') {
+          let result = res.data.data.orders || []
+          let orders = isRefresh ? result : _this.data.orders.concat(result)
+          let page = parseInt(_this.data.page) + 1
           _this.setData({
-            isOver: true
+            orders,
+            page,
+            isLoading: false
+          })
+          if (isRefresh) {
+            wx.stopPullDownRefresh()
+          }
+          if (result.length < 10) {
+            _this.setData({
+              isOver: true
+            })
+          }
+        } else if (res.data.respcd === '2002') {
+          _this.setData({
+            csid: ''
           })
         }
       }
     })
   },
   onPullDownRefresh() {
-    this.fetchData('1')
+    this.fetchData(true, this.data.csid)
   },
   onReachBottom() {
     if (!this.data.isOver) {
-      this.fetchData()
+      this.fetchData(false, this.data.csid)
     }
   }
 })

@@ -44,7 +44,7 @@
 }
 
 swiper {
-  margin-bottom: 60rpx;
+  margin-bottom: 40rpx;
 }
 
 swiper-item {
@@ -59,7 +59,7 @@ swiper-item .count {
   border-radius: 20rpx;
   padding: 0 16rpx;
   left: 50%;
-  bottom: 160rpx;
+  top: 435rpx;
   transform: translateX(-50%);
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
@@ -76,20 +76,29 @@ swiper-item .count {
   background-color: #fff;
   border-radius: 0 0 9rpx 9rpx;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  align-items: center;
+  align-items: flex-start;
   padding: 12rpx 30rpx;
+}
+
+.swiper-info view {
+  flex: 1;
 }
 
 .swiper-info .name {
   font-weight: bold;
   font-size: 32rpx;
   display: block;
+  line-height: 1.4;
+  height: 88rpx;
+  margin-right: 20rpx;
+  overflow: hidden;
 }
 
 .swiper-info button {
   font-size: 28rpx;
   width: 140rpx;
   height: 54rpx;
+  margin-top: 30rpx;
   line-height: 54rpx;
 }
 
@@ -114,6 +123,8 @@ swiper-item .count {
   display: block;
   font-size: 30rpx;
   font-weight: bold;
+  height: 84rpx;
+  overflow: hidden;
 }
 
 .goods .number {

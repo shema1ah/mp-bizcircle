@@ -750,7 +750,7 @@
     /**
      * 新增$this参数，传入组件的this,兼容在组件中生成
      */
-    draw: function (str, canvas, cavW, cavH, $this, ecc) {
+    draw: function (color, str, canvas, cavW, cavH, $this, ecc) {
       var that = this;
       ecclevel = ecc || ecclevel;
       canvas = canvas || _canvas;
@@ -772,7 +772,7 @@
       //ctx.clearRect(0, 0, cavW, cavW);
       ctx.setFillStyle('#ffffff')
       ctx.fillRect(0, 0, cavW, cavW);
-      ctx.setFillStyle('#000000');
+      ctx.setFillStyle(color);
       for (var i = 0; i < width; i++) {
         for (var j = 0; j < width; j++) {
           if (frame[j * width + i]) {

@@ -36,7 +36,6 @@ App({
   },
   globalData: {
     code: '',
-    detail: {},
-    csid: ''
+    detail: {}
   }
 })
