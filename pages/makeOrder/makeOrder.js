@@ -257,7 +257,7 @@ Page({
       timeStamp: params.timeStamp,
       nonceStr: params.nonceStr,
       package: params.package,
-      signType: 'MD5',
+      signType: params.signType,
       paySign: params.paySign,
       success: function(res){
         _this.setData({

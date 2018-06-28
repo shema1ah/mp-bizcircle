@@ -9,6 +9,7 @@ App({
     })
   },
   login: function(detail, code, cb) {
+    let _this = this
     wx.request({
       url: `${config.host}/mtm/customer/login`,
       data: {
@@ -17,7 +18,15 @@ App({
         appid: 'wxacf513d714e19d2a'
       },
       success: function(res) {
-        if (res.data.respcd === '0000') {
+        if (res.data.respcd === '2001') {
+          // code 失效
+          wx.login({
+            success: function (res) {
+              _this.globalData.code = res.code
+              typeof cb === "function" && cb('')
+            }
+          })
+        } else if (res.data.respcd === '0000') {
           let csid = res.data.data.csid
           wx.setStorage({
             key: 'csid',
